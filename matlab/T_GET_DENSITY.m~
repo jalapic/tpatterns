@@ -1,0 +1,7 @@
+function dens = T_GET_DENSITY( ddf, step )
+
+X = 0 : step : max(ddf);
+dens = zeros( 1 , size( X , 2 ) );
+for i = 1 : size( ddf, 1 )
+    dens = dens + normpdf(X, ddf(i) 
+end

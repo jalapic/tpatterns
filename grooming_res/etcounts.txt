@@ -1,0 +1,6 @@
+	Sample1
+auratus1	71
+auratus2	56
+auratus3	61
+auratus7	241
+auratus8	422

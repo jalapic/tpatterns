@@ -1,0 +1,179 @@
+======================Slide 1==================================================
+Good day to all my name is Valera Vishnevskiy and today I will be talking
+about our new approach for pattern detection in behavioral data.
+
+
+======================Slide 2* Big plan========================================
+Here is a plan of presentation. First, I would like to introduce you to main
+concept of problem, that we are trying to solve and reveal basic notions, 
+that are used in that presentation. 
+Then I'll try, in general, to explain existing and popular Magnusson's approach 
+for pattern detection, that is used nowdays.
+After that brief introduction, I would explain our novel algorithm for pattern 
+detection, based on probabilistic methods.
+In coclusion, I will talk about results of experiments, and compare our approach
+with Magnusson's.
+
+
+======================Slide 3* Pattern detection===============================
+#TALK ABOUT PATTERNS in behavior....
+SKIP
+
+
+======================Slide 4* Basic notions===================================
+We worked with behavioral data, that was stored as sequence of pairs: time and 
+behavioral act. 
+    ??
+    Actually, in our particular sequence, every next in time behavioral act
+    ment ending of previous act. In fact, taht feature of data doesn't 
+    limit algorithm's region of applience(область применения).
+    ??
+We can represent our data in more convenient manner. Each behavioral act has set 
+of time moments, when it takes place. Laying out Different behavioral acts 
+vertically and time moments horizontally, we can plot behavioral sequence.
+
+In our work, saying pattern, we mean(according to Magnusson's works) certain 
+oredered sequence of events, where each 2 consecutive events are
+separated with some relatively invariant time interval. 
+    ??Actually, here lays
+    the key difference between our and Magnusson's method: 
+    ??
+    
+======================Slide 6* T-Patterns data type============================
+In method, proposed by Magnusson, events in pattern are joined with critical
+intervals. It means, for example, for pattern #A[d_1,d_2]B#, that after 
+occurrence of A, event B should be met in time segment from d_1 to d_2 more
+often, taking in account, that all events are randomly distributed(which 
+should mena that there are no patterns in data). 
+Note, that, event B shouldn't appear in EVERY time span after EACH ocurrence
+of A,
+    ? as if A shouldn't be met only with B.?
+    
+ 
+======================Slide 7* T-Patterns detection procedure=================
+After defining pattern's structure, following iterative procedure is 
+introduced:
+We initialize our set of patterns with pseudopatterns -- just all single 
+events, like A, B, C, D.........
+ First step deals with construction of new patterns using patterns from 
+ our set. On that step algorithm, for each two patterns, tries to join them
+ with different time intervals.
+ 
+ Second step deals with duplicate and redundant patterns, that may appear
+ in algorithm.
+ 
+ 
+======================Slide 8* T-Patterns drawbacks==========================
+Though, T-Pattern detection method is widely used today, it has serious 
+drawbacks. First, it sensitive to noise: if some long pattern is being
+observed and 1 of the events was missed or changed, that pattern 
+occurrence would not be recognized.
+    
+let's try to eliminate that lack.
+    
+
+======================Slide 9* T-Patterns drawbacks==========================
+    DELETE
+
+
+======================Slide 10* Pattern representation=======================
+...For that we introduce probabilistic pattern representation, that would 
+allow us to say how confident we are, that some pattern occurs in time series.
+
+So again, our pattern is ordered sequence of events, but these events
+are joined not with strictly fixed time interval, but with mean shift and
+dispersion from previous event.
+
+Notice that here we impose probability mass on not on time intervals, that
+are connecting events, but on their variance from the estimated positions.
+***ПОКАЗЫВАТЬ НА СЛАЙДЕ***
+
+===================Slide 11============
+After defining that type of patterns, we need to find the way for 
+detecting such patterns in our data.
+
+===================Slide 12*Loss function=================
+Here we introduce the loss factor. That function equals 1, when all events
+are met in the patttern and less than 1, when some events are missed.
+This way we indicate, that pattern has some missed events.
+Function's parameter lambda, allows to define fuzzines of searched 
+pattern. 
+
+
+===Slide 13*Likelihood function============================
+The next concept of likelihood function is extremly important, for understanding
+the method. For Every pattern, in every time moment of our time series, we 
+calculate a value of confidence, that that pattern P starts to occurr at time\
+moment epsilon in our time series.
+You can see, that patterns occurrences, that are missing some of it's events has
+lesser value of likelihood function. Analysing likihood function, we can mark out
+significant peaks and denote them as pattern ocurrences.
+
+====Slide 14* detecting co-occurrencess======
+The next step deals with construcing new patterns, by joining them 
+with mean shifts and dispersions.
+Without going into details, distance between beginings of pattern occurrencess is computed.
+Each dot on the plot represent distance between some 2 pattern occurrences: X value
+represents the distance itself and Y value represents weight of that distance: multiplication
+of pattern occurrencess likelihoods. 
+After that, optimal mu and sigma are found, that are fitteng computed distribution.
+
+NULL hypothesys...... TODO!!!!!!!!!!!!!!
+
+
+======Slide 16* Types of unnecessary patterns========
+As in Magnusson's approach for T-Patterns detection, while constructing new patterns
+some redundant patterns copies may appear. We can name 2 main groups of such unnecessary patterns:
+    first are patterns, that are just copies of existing patterns. For example pattern ABCD 
+    can be constructed, by joining patterns AB and CD, and at the same time, it
+    can be constructed, by joining pattern ABC with pseudopattern D.
+    
+    second case is a bit more tricky: it's incomplete copies. for example, if we
+    have in our data only pattern ABCD, then at some step, assume, that pattern 
+    BCD was constructed, that means that on next step, we would discover 
+    pattern ABCD, by joining A and BCD. And that means, that BCD is not 
+    pattern, that are aiming to detect: it's just incomplete piece of
+    pattern ABCD, thus it should be dropped.
+    
+To deal with such patterns, we were using correlation coefficient between likelihood 
+functions of patterns. which shows, how simmilar patterns are.
+
+
+======Slide 17* ELimination of patterns==================
+That's the rule for eliminating patterns: in core^ compairing two patterns, one of them
+shold be dropped, if:
+    set of it's events is ordered subset of anpther pattern, and
+    
+    their likelihoods are simmilar, beginning from some event.
+    
+?That rule would work in both situations. On duplicates, because two patterns 
+?are consist of same events and their likilihood functions will be almost 
+?equal. And incomplete copies would be subset of it's prototype and their likelihoods
+?would be simmilar, starting from some point.
+
+======Slide 19* Parameters of algorithm==================
+Again, simillar to Magnusson's approach, our algorithm has 
+some structural parameters, that could not be tuned automatically, and should 
+be set based on prior knowledge about behavioral data and expected results.
+
+The first two parameters are analogues of corresponding parameters
+in Magnussons method: it's minimal significance of relations, that
+are forming a pattern and minimal number of occurencess of pattern 
+in data.
+The third parameter defines the level of fuzziness of patterns
+that are detected. The more this value, the more patterns are fuzzy.
+The next parameter sets threshold of similarity for dropped 
+patterns.
+And the last parameter defines width of time span, where pattern's 
+relations are searched. That parameter is brought to speed up 
+pattern detection process, assuming that we can specify maximal 
+time value of patterns relations.
+
+
+
+
+
+
+
+
+    

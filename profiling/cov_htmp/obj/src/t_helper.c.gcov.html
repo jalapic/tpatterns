@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <title>LCOV - app.info - obj/src/t_helper.c</title>
+  <link rel="stylesheet" type="text/css" href="../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">LCOV - code coverage report</td></tr>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../index.html">top level</a> - <a href="index.html">obj/src</a> - t_helper.c<span style="font-size: 80%;"> (source / <a href="t_helper.c.func.html">functions</a>)</span></td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Test:</td>
+            <td class="headerValue">app.info</td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">6</td>
+            <td class="headerCovTableEntry">42</td>
+            <td class="headerCovTableEntryLo">14.3 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2011-03-29</td>
+            <td></td>
+            <td class="headerItem">Functions:</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntryLo">20.0 %</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="headerItem">Branches:</td>
+            <td class="headerCovTableEntry">5</td>
+            <td class="headerCovTableEntry">30</td>
+            <td class="headerCovTableEntryLo">16.7 %</td>
+          </tr>
+          <tr><td><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">           Branch data     Line data    Source code</pre>
+<pre class="source">
+<a name="1"><span class="lineNum">       1 </span>                :            : #include &quot;t_helper.h&quot;</a>
+<a name="2"><span class="lineNum">       2 </span>                :            : </a>
+<span class="lineNum">       3 </span>                :            : 
+<span class="lineNum">       4 </span>                :<span class="lineNoCov">          0 : int fill_logfac_table(unsigned int size)</span>
+<span class="lineNum">       5 </span>                :            : {
+<span class="lineNum">       6 </span>                :            :         unsigned int i, j;
+<span class="lineNum">       7 </span>                :<span class="lineNoCov">          0 :         logfac_table = (double*) malloc( size * sizeof( double ) );</span>
+<span class="lineNum">       8 </span>        [<span class="branchNoExec" title="Block containing branch 0 was never executed"> # </span><span class="branchNoExec" title="Block containing branch 1 was never executed"> # </span>]:<span class="lineNoCov">          0 :         if ( !logfac_table ) </span>
+<span class="lineNum">       9 </span>                :            :         {
+<span class="lineNum">      10 </span>                :<span class="lineNoCov">          0 :                 logfac_table_size = 0;</span>
+<span class="lineNum">      11 </span>                :<span class="lineNoCov">          0 :                 fprintf( stderr, &quot;\n Can't allocate factorial table size = %d&quot;, size);</span>
+<span class="lineNum">      12 </span>                :<span class="lineNoCov">          0 :                 return 0;</span>
+<span class="lineNum">      13 </span>                :            :         }
+<span class="lineNum">      14 </span>                :<span class="lineNoCov">          0 :         logfac_table_size = size;</span>
+<span class="lineNum">      15 </span>                :<span class="lineNoCov">          0 :         logfac_table[0] = logfac_table[1] = 0;</span>
+<span class="lineNum">      16 </span>        [<span class="branchNoExec" title="Block containing branch 0 was never executed"> # </span><span class="branchNoExec" title="Block containing branch 1 was never executed"> # </span>]:<span class="lineNoCov">          0 :         for ( i = 1 ; i &lt; size; i++ )</span>
+<span class="lineNum">      17 </span>                :            :         {
+<span class="lineNum">      18 </span>                :<span class="lineNoCov">          0 :                 logfac_table[i] = 0;</span>
+<span class="lineNum">      19 </span>        [<span class="branchNoExec" title="Block containing branch 0 was never executed"> # </span><span class="branchNoExec" title="Block containing branch 1 was never executed"> # </span>]:<span class="lineNoCov">          0 :                 for ( j = 2; j &lt;= i; j++ )</span>
+<span class="lineNum">      20 </span>                :            :                 {
+<span class="lineNum">      21 </span>                :<span class="lineNoCov">          0 :                         logfac_table[i] += log( j );</span>
+<span class="lineNum">      22 </span>                :            :                 }
+<span class="lineNum">      23 </span>                :            :         }
+<span class="lineNum">      24 </span>                :<span class="lineNoCov">          0 :         return 1;</span>
+<a name="25"><span class="lineNum">      25 </span>                :            : }</a>
+<span class="lineNum">      26 </span>                :            : 
+<span class="lineNum">      27 </span>                :<span class="lineNoCov">          0 : double log_fac( double N )</span>
+<span class="lineNum">      28 </span>                :            : {
+<span class="lineNum">      29 </span>                :<span class="lineNoCov">          0 :         double ret = 0;</span>
+<span class="lineNum">      30 </span>                :            :         unsigned int i;
+<span class="lineNum">      31 </span>        [<span class="branchNoExec" title="Block containing branch 0 was never executed"> # </span><span class="branchNoExec" title="Block containing branch 1 was never executed"> # </span>]:<span class="lineNoCov">          0 :         for ( i = 2; i &lt;= N; i++)</span>
+<span class="lineNum">      32 </span>                :<span class="lineNoCov">          0 :                 ret += log( i );</span>
+<span class="lineNum">      33 </span>                :<span class="lineNoCov">          0 :         return ret; </span>
+<a name="34"><span class="lineNum">      34 </span>                :            : } </a>
+<span class="lineNum">      35 </span>                :            : 
+<span class="lineNum">      36 </span>                :<span class="lineCov">   12969858 : double C_iz_N_po_k(unsigned int Na, unsigned int i)</span>
+<span class="lineNum">      37 </span>                :            : {
+<span class="lineNum">      38 </span>                :            :         unsigned int j;
+<span class="lineNum">      39 </span>                :<span class="lineCov">   12969858 :         double t = 1;</span>
+<span class="lineNum">      40 </span>[<span class="branchCov" title="Branch 0 was taken 24794917 times"> + </span><span class="branchCov" title="Branch 1 was taken 12969858 times"> + </span>][<span class="branchNoCov" title="Branch 2 was not taken"> - </span><span class="branchCov" title="Branch 3 was taken 12969858 times"> + </span>]:<span class="lineCov">   37764775 :         for ( j = Na - i + 1 ; ( j &lt;= Na ) || ( ( j + i - Na ) &lt;= i ); j++ )</span>
+<span class="lineNum">      41 </span>                :            :     {
+<span class="lineNum">      42 </span>[<span class="branchCov" title="Branch 0 was taken 24794917 times"> + </span><span class="branchNoCov" title="Branch 1 was not taken"> - </span>][<span class="branchCov" title="Branch 2 was taken 24794917 times"> + </span><span class="branchNoCov" title="Branch 3 was not taken"> - </span>]:<span class="lineCov">   24794917 :                         if      ( ( ( j + i - Na ) &lt;= i ) &amp;&amp; ( j &lt;= Na ) )</span>
+<span class="lineNum">      43 </span>                :<span class="lineCov">   24794917 :                     t *= (double) j / ( j + i - Na );</span>
+<span class="lineNum">      44 </span>[<span class="branchNoExec" title="Block containing branch 0 was never executed"> # </span><span class="branchNoExec" title="Block containing branch 1 was never executed"> # </span>][<span class="branchNoExec" title="Block containing branch 2 was never executed"> # </span><span class="branchNoExec" title="Block containing branch 3 was never executed"> # </span>]:<span class="lineNoCov">          0 :                 else if ( ( ( j + i - Na ) &gt;  i ) &amp;&amp; ( j &lt;= Na ) )</span>
+<span class="lineNum">      45 </span>                :<span class="lineNoCov">          0 :                     t *= (double) j;</span>
+<span class="lineNum">      46 </span>[<span class="branchNoExec" title="Block containing branch 0 was never executed"> # </span><span class="branchNoExec" title="Block containing branch 1 was never executed"> # </span>][<span class="branchNoExec" title="Block containing branch 2 was never executed"> # </span><span class="branchNoExec" title="Block containing branch 3 was never executed"> # </span>]:<span class="lineNoCov">          0 :                 else if ( ( ( j + i - Na ) &lt;=  i ) &amp;&amp; ( j &gt; Na ) )</span>
+<span class="lineNum">      47 </span>                :<span class="lineNoCov">          0 :                     t /= (double) ( j + i - Na );</span>
+<span class="lineNum">      48 </span>                :            :         }
+<span class="lineNum">      49 </span>                :<span class="lineCov">   12969858 :         return t;</span>
+<a name="50"><span class="lineNum">      50 </span>                :            : }</a>
+<span class="lineNum">      51 </span>                :            : 
+<span class="lineNum">      52 </span>                :<span class="lineNoCov">          0 : double norm_rnd(double x, double mu, double sigma)</span>
+<span class="lineNum">      53 </span>                :            : {
+<span class="lineNum">      54 </span>                :<span class="lineNoCov">          0 :         return INV_SQRT_2PI * exp( - ( x - mu )*( x - mu ) / ( 2 * sigma ) ) / sqrt(sigma) ;</span>
+<a name="55"><span class="lineNum">      55 </span>                :            : }</a>
+<span class="lineNum">      56 </span>                :            : 
+<span class="lineNum">      57 </span>                :<span class="lineNoCov">          0 : int fill_C_iz_N_po_k_table(unsigned int N, unsigned int K)</span>
+<span class="lineNum">      58 </span>                :            : {
+<span class="lineNum">      59 </span>                :            :         int i,j;
+<span class="lineNum">      60 </span>                :<span class="lineNoCov">          0 :         C_iz_N_po_k_table_K = K;</span>
+<span class="lineNum">      61 </span>                :<span class="lineNoCov">          0 :         C_iz_N_po_k_table_N = N;</span>
+<span class="lineNum">      62 </span>                :<span class="lineNoCov">          0 :         C_iz_N_po_k_table = ( double* ) malloc( N * K * sizeof(double) );</span>
+<span class="lineNum">      63 </span>        [<span class="branchNoExec" title="Block containing branch 0 was never executed"> # </span><span class="branchNoExec" title="Block containing branch 1 was never executed"> # </span>]:<span class="lineNoCov">          0 :         if ( ! C_iz_N_po_k_table )</span>
+<span class="lineNum">      64 </span>                :            :         {
+<span class="lineNum">      65 </span>                :<span class="lineNoCov">          0 :                 C_iz_N_po_k_table_K = C_iz_N_po_k_table_N = 0;</span>
+<span class="lineNum">      66 </span>                :<span class="lineNoCov">          0 :                 fprintf( stderr, &quot;\n Can't allocate Combinations table %dx%d&quot;, K,N);</span>
+<span class="lineNum">      67 </span>                :<span class="lineNoCov">          0 :                 return 0;</span>
+<span class="lineNum">      68 </span>                :            :         }
+<span class="lineNum">      69 </span>        [<span class="branchNoExec" title="Block containing branch 0 was never executed"> # </span><span class="branchNoExec" title="Block containing branch 1 was never executed"> # </span>]:<span class="lineNoCov">          0 :         for ( i = 0; i &lt; N; i++)</span>
+<span class="lineNum">      70 </span>                :            :         {
+<span class="lineNum">      71 </span>        [<span class="branchNoExec" title="Block containing branch 0 was never executed"> # </span><span class="branchNoExec" title="Block containing branch 1 was never executed"> # </span>]:<span class="lineNoCov">          0 :                 for ( j = 0; j &lt; K; j++)</span>
+<span class="lineNum">      72 </span>                :            :                 {
+<span class="lineNum">      73 </span>                :<span class="lineNoCov">          0 :                         C_iz_N_po_k_table[ i * K + j ] = C_iz_N_po_k(i,j);</span>
+<span class="lineNum">      74 </span>                :            :                 }
+<span class="lineNum">      75 </span>                :            :         }
+<span class="lineNum">      76 </span>                :<span class="lineNoCov">          0 :         return 1;</span>
+<span class="lineNum">      77 </span>                :            : }
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.8</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

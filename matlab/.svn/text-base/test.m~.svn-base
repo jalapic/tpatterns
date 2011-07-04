@@ -1,0 +1,60 @@
+
+%% Pr
+tic
+CIs = [20 31; 10 14; 3 6; 5 7; 3 6];
+levels = [ 2 0.00005 4; 4 0.0005 3 ];
+[events, Nt] = T_LOAD_FILE('../real_data/grooming_hamsters/eversmanni116.txt'); %'../real_data/grooming_hamsters/auratus1.txt');
+%[events, Nt, ts] = T_GENERATE_PATTERN('abcdef', 'xyz', CIs, 8, 3000, 0.005, 0.005);
+%ss = mexPattern(events, Nt, levels', 0, 1);
+size(events(1).indexes, 2)
+AB = zeros( size(events(1).indexes, 2),  size(events(2).indexes, 2));
+for i = 1 :  size(events(1).indexes, 2)
+    for j = 1 : size( events(2).indexes, 2)
+        AB(i,j) = events(2).indexes(j) - events(1).indexes(i);
+    end
+end
+AB;
+events(1).indexes
+events(2).indexes
+cla
+hold on
+H = zeros(1, max(max(AB)) );
+X = 0:0.01:max(max(AB));
+N = size( X, 2);
+yy = zeros(1, N);
+
+sigma = 8;
+for i = 1 : size( events(1).indexes, 2)
+    d = (AB(i,:)>0).*AB(i,:);
+    plot(  d, i .* ones(1,size( d)), '*', 'MarkerSize', 2, 'MarkerFaceColor', 'b', 'MarkerEdgeColor', 'b' ) 
+    for j = 1 : size(d,2) 
+        if (d(j) > 0)
+            H( d(j) ) = H( d(j) ) + 1;
+        end
+        if ( d(j) ~= 0 )
+             %yy = yy + 1/(sigma*sqrt(2*pi)) * exp( - ( ( X - d(j) ).^2 )/(2*sigma*sigma) );
+             yy = yy + 1/(sigma*sqrt(2*pi)) * exp( - ( ( X - d(j) ).^2 )/(2*sigma*sigma) );
+        end
+    end
+end
+y = filter(ones(1,1)/1, 1, -1 .* H .* ones(1,size( H)) );
+%yy = filter(ones(1,1000)/1000, 1, yy);
+%yy = spline(1:size(H,2), y, 0:0.01:max(max(AB)) ); 
+%yy
+plot(  1:size(H,2),  2.*y,  'o', 'MarkerSize', 5, 'MarkerFaceColor', 'k', 'MarkerEdgeColor', 'k')
+plot( X, -yy.*60 , 'Color', 'r')
+H;
+size(H)
+%T_STAT_VALIDATE( Nt, events, levels, 7)
+toc
+%T_DRAW_PATTERNS(ss, events, Nt, -1);
+
+%% From file
+tic
+levels = [ 1 0.05 3];
+[events2, Nt] = T_LOAD_FILE('../real_data/grooming_hamsters/auratus7.txt'); %'../real_data/grooming_hamsters/auratus1.txt');
+ss = mexPattern(events2, Nt, levels', 0, 2);
+%T_STAT_VALIDATE( Nt, events2, levels, 7)
+toc
+T_DRAW_PATTERNS(ss, events2, Nt, -1 );
+

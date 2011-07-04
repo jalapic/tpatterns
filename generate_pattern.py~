@@ -1,0 +1,49 @@
+# -*- coding: utf-8 -*-
+import math
+import random
+
+pat = [ [8,12], [10, 15], [9,14], [10,12] ]
+sym = ['a', 'b', 'c', 'd', 'e' ]
+Npat = 7;
+ts = []
+tss = ['g', 'j', 'r']
+#N = 5000;
+length = 0
+random.seed()
+for it in pat:
+	length = length + it[1];
+
+while Npat > 0: 
+	ts.append( sym[0] ) 
+	for i in xrange( len(pat) ):
+		for j in range( pat[i][0] + random.randint(0,pat[i][1] - pat[i][0]) ):
+			ts.append( '-' )
+		ts.append( sym[i+1] )
+	for i in range( random.randint(100,300) ):
+		ts.append( '-' )
+	Npat-=1
+
+for i in xrange(len(ts)):
+	if ts[i] == '-':
+		if   random.randint(0,1000) > 990 :
+			ts[i] = sym[ random.randint( 0, len(sym)-1 ) ]
+		elif random.randint(0,1000) > 913 : 
+			ts[i] = tss[ random.randint( 0, len(tss)-1 ) ]
+	else:
+		if   random.randint(0,1000) > 997 :
+			ts[i] = sym[ random.randint( 0, len(sym)-1 ) ]
+		elif random.randint(0,1000) > 997 : 
+			ts[i] = tss[ random.randint( 0, len(tss)-1 ) ]
+
+
+print 'Time\tEvent\n0\t:\n',
+
+for i in xrange(len(ts)):
+	 if ts[i] != '-':
+	 	print i,'\t',ts[i],'\n',
+
+print len(ts),'\t&\n',
+
+for i in xrange(len(ts)):
+	 	print ts[i],
+	

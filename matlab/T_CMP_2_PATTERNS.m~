@@ -1,0 +1,13 @@
+function [pLR, ddf] = T_CMP_2_PATTERNS(patL, patR, window)
+
+
+pLR = zeros( size( patL.DS, 1 ),  size( patR.DS, 1 ) );
+for i = 1 : size( patL.DS, 1)
+    for j = 1 : size( patR.DS, 1)
+        pLR(i,j) = patR.DS(j) - patL.indexes(i);
+        if pLR(i,j) > window
+            pLR(i,j) = 0;
+        end
+    end
+end
+ddf = find( (pLR > 0) .* pLR );

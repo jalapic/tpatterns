@@ -1,0 +1,18 @@
+function [minimums, maximums] = T_GET_MINMAX( dens, mesh_step )
+minimums = [];
+maximums = [];
+ddens = diff( dens );
+for i = 1 : size( ddens, 1 )
+
+end
+% for i = 11:size(dens,2)-11
+%     if ( ( dens(i-10) < dens(i) ) && ( dens(i-5) < dens(i) ) && ( dens(i+10) < dens(i) ) && ( dens(i+5) < dens(i) ) )
+%         maximums( size(maximums, 2) + 1 ) = int32( i*mesh_step ); 
+%     end
+%     if ( ( dens(i-10) > dens(i) ) && ( dens(i-5) > dens(i) ) && ( dens(i+10) > dens(i) ) && ( dens(i+5) > dens(i) ) )
+%         minimums( size(minimums, 2) + 1 ) = int32( i*mesh_step ); 
+%     end
+% end
+
+maximums = unique(maximums);
+minimums = unique(minimums);

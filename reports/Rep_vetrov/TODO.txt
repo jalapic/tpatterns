@@ -1,0 +1,9 @@
+TODO:
+!-example fot t-patterns add t_A d_1 to image
+!!-!example time series do nicer
+!!-add picture to slide 8
+!-slide 8 delete "crisp"
+!-slide 13 больше картинку
+
+-null hypothesys
+-add experiments results

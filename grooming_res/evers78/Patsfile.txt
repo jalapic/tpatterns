@@ -1,0 +1,106 @@
+Format (Spearators: one TAB after terminals then space); terminal_string TAB id n length levels duration %duration	
+( body_rubbing  non_grooming )	20 2 2 1 42 0 566 587 918 937
+( body_shaking  cheeks_sacks_washing )	21 4 2 1 51 0 199 222 288 294 1755 1763 10653 10663
+( body_shaking  hindlimb_licking )	22 5 2 1 168 1 3134 3141 3806 3823 4172 4215 10653 10736 19671 19684
+( body_shaking  non_grooming )	23 5 2 1 54 0 199 204 274 278 288 308 4172 4187 10575 10580
+( cheeks_sacks_washing  forelimb_licking )	24 17 2 1 540 2 1516 1529 1550 1568 1591 1605 1763 1768 1911 1938 2209 2250 2351 2371 4748 4762 5376 5414 8921 8944 9319 9353 9749 9818 10030 10121 15539 15570 15890 15912 17508 17557 22230 22244
+( cheeks_sacks_washing  hand_biting )	25 4 2 1 92 0 8747 8761 8794 8807 9907 9961 17508 17515
+( cheeks_sacks_washing  hand_licking )	26 58 2 1 1137 5 294 303 819 827 832 841 846 862 1498 1510 1836 1848 1856 1866 1879 1890 1911 1924 2105 2117 2127 2137 2209 2235 2351 2366 8534 8548 8624 8644 8666 8682 8733 8743 8830 8836 8873 8887 8896 8910 8985 9148 9167 9178 9969 9981 9993 10007 15117 15130 15142 15154 15167 15179 15190 15199 15208 15218 15234 15246 15258 15268 15282 15295 15309 15331 15335 15346 15359 15384 15390 15403 15419 15434 15477 15490 15503 15529 15539 15558 15709 15725 15731 15755 15774 15788 15802 15819 15827 15843 15853 15882 15890 15897 17471 17477 17986 18064 18084 18096 18108 18143 18149 18165 18171 18186 18197 18219 18755 18799 19902 19917 22214 22223 22230 22242
+( chin_washing  cheeks_sacks_washing )	27 4 2 1 168 1 1435 1498 2069 2105 8562 8624 16088 16091
+( fast_nose_washing  head_and_ears_washing )	30 5 2 1 178 1 2180 2240 5305 5346 9272 9292 10690 10719 16043 16066
+( fast_nose_washing  hindlimb_licking )	31 7 2 1 629 3 4414 4441 5305 5460 10690 10736 13353 13381 16043 16183 18509 18688 19874 19921
+( forelimb_biting  forelimb_licking )	33 3 2 1 116 1 1750 1768 9387 9426 9762 9818
+( hand_biting  forelimb_licking )	35 4 2 1 359 2 8807 8944 9961 10121 14889 14905 17515 17557
+( hand_licking  cheeks_sacks_washing )	36 60 2 1 2328 10 129 222 767 819 827 832 841 846 862 878 1459 1498 1510 1516 1848 1856 1866 1879 1890 1911 1924 2105 2117 2127 2137 2152 2235 2351 4626 4748 8370 8534 8548 8624 8644 8666 8682 8733 8743 8747 8836 8873 8887 8896 8910 8921 9148 9167 9178 9194 9981 9993 10007 10030 15130 15142 15154 15167 15179 15190 15199 15208 15218 15234 15246 15258 15268 15282 15295 15309 15331 15335 15346 15359 15384 15390 15403 15419 15434 15447 15490 15503 15529 15539 15558 15709 15725 15731 15755 15774 15788 15802 15819 15827 15843 15853 15882 15890 15897 16091 17477 17508 17939 17986 18064 18084 18096 18108 18143 18149 18165 18171 18186 18197 18219 18521 22120 22214 22223 22230
+( hand_licking  flank_licking )	37 2 2 1 19 0 12670 12683 18219 18223
+( hand_licking  forelimb_licking )	38 10 2 1 199 1 767 803 1510 1529 1924 1938 2235 2250 2366 2371 4626 4663 8910 8944 15558 15570 15897 15912 22242 22244
+( head_and_ears_washing  forelimb_licking )	40 3 2 1 142 1 2240 2250 5346 5414 9292 9353
+( non_grooming  body_shaking )	41 8 2 1 302 1 139 199 230 274 278 288 3098 3134 3770 3806 10563 10575 10580 10653 19648 19671
+( non_grooming  hindlimb_licking )	42 14 2 1 409 2 3063 3080 3098 3141 3770 3823 4187 4215 7041 7070 7252 7277 7502 7518 11215 11226 11786 11808 11941 11999 13610 13622 19230 19256 19512 19531 19648 19684
+( non_grooming  scratching_by_hindlimb )	43 23 2 1 866 4 1348 1369 2985 3002 6239 6282 6356 6428 6525 6581 6679 6720 6800 6824 6893 6957 7193 7212 7381 7399 7455 7463 8287 8310 10580 10590 11060 11071 11131 11151 11556 11570 11883 11895 12070 12097 12317 12323 12461 12517 12900 12934 12975 13036 13061 13247
+( nose_washing  fast_nose_washing )	47 9 2 1 391 2 631 739 2158 2180 4362 4414 9206 9272 10676 10690 13327 13353 15983 16043 18496 18509 19853 19874
+( nose_washing  flank_licking )	48 3 2 1 220 1 12656 12683 15983 16106 18496 18563
+( nose_washing  hindlimb_licking )	50 5 2 1 325 1 4362 4441 10676 10736 13327 13381 18746 18805 19853 19921
+( scratching_by_hindlimb  non_grooming )	52 24 2 1 2612 12 1369 1406 3002 3063 6282 6356 6428 6525 6581 6679 6720 6800 6824 6893 6957 7041 7212 7252 7399 7455 7463 7502 8310 8363 10590 11060 11071 11131 11151 11215 11570 11786 11895 11941 12097 12317 12323 12461 12517 12585 12934 12975 13036 13061 13247 13610 21794 21883
+( body_shaking ( nose_washing  hindlimb_licking ))	53 3 3 2 605 3 4172 4362 4441 10653 10676 10736 19671 19853 19921
+( cheeks_sacks_washing ( hand_licking  forelimb_licking ))	55 8 3 2 242 1 1498 1510 1529 1911 1924 1938 2209 2235 2250 2351 2366 2371 8896 8910 8944 15539 15558 15570 15890 15897 15912 22230 22242 22244
+( cheeks_sacks_washing ( nose_washing  fast_nose_washing ))	56 3 3 2 136 1 2152 2158 2180 9194 9206 9272 10663 10676 10690
+( cheeks_sacks_washing ( nose_washing  head_and_ears_washing ))	57 3 3 2 245 1 2152 2158 2240 9194 9206 9292 10663 10676 10719
+( chin_washing ( hand_licking  forelimb_licking ))	58 2 3 2 277 1 1435 1510 1529 2069 2235 2250
+( fast_nose_washing ( cheeks_sacks_washing  forelimb_licking ))	59 3 3 2 263 1 2180 2209 2250 5305 5376 5414 9272 9319 9353
+( fast_nose_washing ( nose_eyes_washing  forelimb_licking ))	60 2 3 2 128 1 739 761 803 4601 4612 4663
+( fast_nose_washing ( nose_eyes_washing  hand_licking ))	61 3 3 2 346 2 739 761 767 4601 4612 4626 18509 18772 18799
+( forelimb_licking ( fast_nose_washing  flank_licking ))	62 2 3 2 357 2 15912 16043 16106 18402 18509 18563
+( genitals_licking ( fast_nose_washing  hindlimb_licking ))	63 2 3 2 531 2 5223 5305 5460 13089 13353 13381
+( hand_biting ( cheeks_sacks_washing  hand_licking ))	64 2 3 2 51 0 8807 8830 8836 9961 9969 9981
+( hand_licking ( cheeks_sacks_washing  forelimb_licking ))	65 9 3 2 509 2 1510 1516 1529 1890 1911 1938 2137 2209 2250 8910 8921 8944 10007 10030 10121 15529 15539 15570 15882 15890 15912 17477 17508 17557 22223 22230 22244
+( non_grooming ( body_shaking  hindlimb_licking ))	67 4 3 2 292 1 3098 3134 3141 3770 3806 3823 10580 10653 10736 19648 19671 19684
+( nose_washing ( chin_washing  cheeks_sacks_washing ))	69 2 3 2 247 1 8487 8562 8624 15983 16088 16091
+( nose_washing ( fast_nose_washing  flank_licking ))	70 2 3 2 192 1 15983 16043 16106 18496 18509 18563
+( nose_washing ( fast_nose_washing  forelimb_licking ))	71 4 3 2 716 3 631 739 803 2158 2180 2250 4362 4601 4663 9206 9272 9353
+( nose_washing ( fast_nose_washing  hindlimb_licking ))	72 6 3 2 659 3 4362 4414 4441 10676 10690 10736 13327 13353 13381 15983 16043 16183 18496 18509 18688 19853 19874 19921
+( nose_washing ( fast_nose_washing  nose_eyes_washing ))	73 3 3 2 659 3 631 739 761 4362 4601 4612 18496 18509 18772
+( nose_washing ( hand_licking  forelimb_licking ))	74 4 3 2 489 2 631 767 803 2158 2235 2250 15463 15558 15570 22130 22242 22244
+( nose_washing ( hand_licking  hindlimb_licking ))	75 2 3 2 129 1 18746 18799 18805 19853 19917 19921
+( nose_washing ( nose_eyes_washing  hand_licking ))	77 3 3 2 456 2 631 761 767 4362 4612 4626 18746 18772 18799
+( scratching_by_hindlimb ( non_grooming  hindlimb_licking ))	78 6 3 2 496 2 3002 3063 3080 6957 7041 7070 7212 7252 7277 7463 7502 7518 11151 11215 11226 11895 11941 11999
+(( body_shaking  cheeks_sacks_washing ) non_grooming )	79 2 3 2 53 0 199 222 230 288 294 308
+(( body_shaking  cheeks_sacks_washing )( fast_nose_washing  forelimb_licking ))	81 2 4 2 1012 5 288 294 739 803 1755 1763 2180 2250
+(( body_shaking  cheeks_sacks_washing )( nose_washing  head_and_ears_washing ))	82 2 4 2 553 2 1755 1763 2158 2240 10653 10663 10676 10719
+(( body_shaking  hindlimb_licking )( nose_washing  fast_nose_washing ))	83 2 4 2 447 2 4172 4215 4362 4414 19671 19684 19853 19874
+(( body_shaking  non_grooming )( nose_eyes_washing  forelimb_licking ))	85 2 4 2 1008 4 288 308 761 803 4172 4187 4612 4663
+(( body_shaking  non_grooming )( nose_eyes_washing  hand_licking ))	86 2 4 2 935 4 288 308 761 767 4172 4187 4612 4626
+(( body_shaking  non_grooming )( nose_washing  hindlimb_licking ))	87 2 4 2 432 2 4172 4187 4362 4441 10575 10580 10676 10736
+(( cheeks_sacks_washing  forelimb_licking ) abdomen_licking )	88 4 3 2 763 3 2351 2371 2607 4748 4762 4821 10030 10121 10201 17508 17557 17767
+(( cheeks_sacks_washing  forelimb_licking ) forelimb_biting )	89 3 3 2 267 1 1591 1605 1650 9319 9353 9387 22230 22244 22367
+(( cheeks_sacks_washing  hand_licking )( nose_washing  head_and_ears_washing ))	91 2 4 2 240 1 2127 2137 2158 2240 9167 9178 9206 9292
+(( chin_washing  cheeks_sacks_washing ) hand_licking )	92 3 3 2 208 1 1435 1498 1510 2069 2105 2117 8562 8624 8644
+(( fast_nose_washing  head_and_ears_washing )( cheeks_sacks_washing  forelimb_licking ))	93 3 4 2 384 2 2180 2240 2351 2371 5305 5346 5376 5414 9272 9292 9319 9353
+(( nose_washing  nose_eyes_washing ) forelimb_licking )	96 2 3 2 475 2 631 761 803 4362 4612 4663
+(( fast_nose_washing  nose_eyes_washing )( hand_licking  cheeks_sacks_washing ))	97 2 4 2 229 1 739 761 767 819 4601 4612 4626 4748
+(( hand_licking  cheeks_sacks_washing ) forelimb_licking )	98 9 3 2 554 2 1510 1516 1529 1890 1911 1938 2235 2351 2371 4626 4748 4762 8910 8921 8944 15529 15539 15570 15882 15890 15912 17477 17508 17557 22223 22230 22244
+(( hand_licking  cheeks_sacks_washing ) hand_biting )	99 2 3 2 58 0 8743 8747 8761 17477 17508 17515
+(( hand_licking  cheeks_sacks_washing )( nose_washing  fast_nose_washing ))	100 2 4 2 139 1 2137 2152 2158 2180 9178 9194 9206 9272
+(( hand_licking  cheeks_sacks_washing )( nose_washing  head_and_ears_washing ))	101 2 4 2 219 1 2137 2152 2158 2240 9178 9194 9206 9292
+(( hand_licking  forelimb_licking )( chin_washing  cheeks_sacks_washing ))	103 2 4 2 377 2 1924 1938 2069 2105 15897 15912 16088 16091
+(( non_grooming  body_shaking )( nose_washing  hindlimb_licking ))	106 2 4 2 431 2 10580 10653 10676 10736 19648 19671 19853 19921
+(( nose_washing  fast_nose_washing )( hand_licking  hindlimb_licking ))	107 3 4 2 930 4 10676 10690 11221 11226 18496 18509 18799 18805 19853 19874 19917 19921
+(( nose_washing  fast_nose_washing )( nose_eyes_washing  hand_licking ))	108 3 4 2 706 3 631 739 761 767 4362 4414 4612 4626 18496 18509 18772 18799
+(( scratching_by_hindlimb  non_grooming ) hindlimb_licking )	111 8 3 2 1111 5 3002 3063 3080 6957 7041 7070 7212 7252 7277 7463 7502 7518 11151 11215 11226 11570 11786 11808 11895 11941 11999 13247 13610 13622
+( body_shaking (( nose_washing  nose_eyes_washing )( hand_licking  cheeks_sacks_washing )))	112 2 5 3 1109 5 288 631 761 767 819 4172 4362 4612 4626 4748
+( cheeks_sacks_washing ( nose_washing ( fast_nose_washing  forelimb_licking )))	114 2 4 3 259 1 2152 2158 2180 2250 9194 9206 9272 9353
+( cheeks_sacks_washing ( nose_washing ( hand_licking  forelimb_licking )))	115 2 4 3 223 1 2152 2158 2235 2250 15447 15463 15558 15570
+( cheeks_sacks_washing (( hand_licking  forelimb_licking ) chin_washing ))	116 2 4 3 358 2 1911 1924 1938 2069 15890 15897 15912 16088
+( cheeks_sacks_washing (( hand_licking  forelimb_licking )( nose_washing  head_and_ears_washing )))	117 3 5 3 904 4 1911 1924 1938 2158 2240 8896 8910 8944 9206 9292 15890 15897 15912 15983 16066
+( chin_washing ( cheeks_sacks_washing ( nose_washing  fast_nose_washing )))	118 2 4 3 823 4 2069 2152 2158 2180 8562 9194 9206 9272
+( chin_washing ( cheeks_sacks_washing ( nose_washing  head_and_ears_washing )))	119 2 4 3 903 4 2069 2152 2158 2240 8562 9194 9206 9292
+( chin_washing ( nose_washing ( head_and_ears_washing  forelimb_licking )))	120 2 4 3 974 4 2069 2158 2240 2250 8562 9206 9292 9353
+( chin_washing (( nose_washing  head_and_ears_washing )( cheeks_sacks_washing  forelimb_licking )))	121 2 5 3 1095 5 2069 2158 2240 2351 2371 8562 9206 9292 9319 9353
+( chin_washing (( hand_licking  cheeks_sacks_washing ) forelimb_licking ))	122 2 4 3 398 2 1435 1510 1516 1529 2069 2235 2351 2371
+( chin_washing (( hand_licking  forelimb_licking )( nose_washing  head_and_ears_washing )))	123 2 5 3 1537 7 1435 1924 1938 2158 2240 8562 8910 8944 9206 9292
+( hand_licking ( cheeks_sacks_washing ( hand_biting  forelimb_licking )))	125 2 4 3 283 1 8743 8794 8807 8944 17477 17508 17515 17557
+( hand_licking ( nose_washing ( head_and_ears_washing  forelimb_licking )))	126 2 4 3 290 1 2137 2158 2240 2250 9178 9206 9292 9353
+( hand_licking (( nose_washing  head_and_ears_washing )( cheeks_sacks_washing  forelimb_licking )))	127 2 5 3 411 2 2137 2158 2240 2351 2371 9178 9206 9292 9319 9353
+( nose_washing ( cheeks_sacks_washing ( hand_licking  forelimb_licking )))	128 3 4 3 316 1 2158 2209 2235 2250 15463 15539 15558 15570 22130 22230 22242 22244
+( nose_washing (( fast_nose_washing  hindlimb_licking )( nose_eyes_washing  hand_licking )))	131 2 5 3 569 3 4362 4414 4441 4612 4626 18496 18509 18688 18772 18799
+( nose_washing (( hand_licking  cheeks_sacks_washing ) forelimb_licking ))	132 3 4 3 437 2 2158 2235 2351 2371 15463 15529 15539 15570 22130 22223 22230 22244
+(( cheeks_sacks_washing  hand_licking )( nose_washing ( fast_nose_washing  forelimb_licking )))	133 2 5 3 311 1 2127 2137 2158 2180 2250 9167 9178 9206 9272 9353
+((( cheeks_sacks_washing  hand_biting ) abdomen_licking )(( nose_washing  fast_nose_washing )( hand_licking  hindlimb_licking )))	135 2 7 3 2618 12 9907 9961 10201 10676 10690 11221 11226 17508 17515 17767 18496 18509 18799 18805
+(( hand_biting  forelimb_licking )( cheeks_sacks_washing ( nose_washing  fast_nose_washing )))	136 2 5 3 1196 5 8807 8944 9194 9206 9272 9961 10121 10663 10676 10690
+(( hand_biting  forelimb_licking )( cheeks_sacks_washing ( nose_washing  head_and_ears_washing )))	137 2 5 3 1245 6 8807 8944 9194 9206 9292 9961 10121 10663 10676 10719
+(( non_grooming  body_shaking )(( nose_washing  fast_nose_washing )( hand_licking  hindlimb_licking )))	139 2 6 3 921 4 10580 10653 10676 10690 11221 11226 19648 19671 19853 19874 19917 19921
+(( cheeks_sacks_washing ( hand_licking  forelimb_licking )) forelimb_biting )	140 2 4 3 291 1 1498 1510 1529 1650 22230 22242 22244 22367
+(( hand_licking ( cheeks_sacks_washing  forelimb_licking )) chin_washing )	141 2 4 3 387 2 1890 1911 1938 2069 15882 15890 15912 16088
+(( hand_licking ( cheeks_sacks_washing  forelimb_licking ))( fast_nose_washing  head_and_ears_washing ))	142 3 5 3 919 4 1890 1911 1938 2180 2240 8910 8921 8944 9272 9292 15882 15890 15912 16043 16066
+(( hand_licking ( cheeks_sacks_washing  forelimb_licking ))( nose_washing  head_and_ears_washing ))	143 4 5 3 1632 7 1890 1911 1938 2158 2240 8910 8921 8944 9206 9292 10007 10030 10121 10676 10719 15882 15890 15912 15983 16066
+((( chin_washing  cheeks_sacks_washing ) hand_licking )( forelimb_biting  forelimb_licking ))	145 2 5 3 1199 5 1435 1498 1510 1750 1768 8562 8624 8644 9387 9426
+((( hand_licking  cheeks_sacks_washing ) forelimb_licking ) abdomen_licking )	146 3 4 3 860 4 2235 2351 2371 2607 4626 4748 4762 4821 17477 17508 17557 17767
+((( hand_licking  forelimb_licking )( nose_washing  head_and_ears_washing )) cheeks_sacks_washing )	147 2 5 3 605 3 8910 8944 9206 9292 9319 15897 15912 15983 16066 16091
+((( non_grooming  body_shaking ) cheeks_sacks_washing ) nose_washing )	148 2 4 3 176 1 278 288 294 356 10580 10653 10663 10676
+( chin_washing (( hand_licking  forelimb_licking )( cheeks_sacks_washing ( nose_washing  fast_nose_washing ))))	149 2 6 4 1457 6 1435 1924 1938 2152 2158 2180 8562 8910 8944 9194 9206 9272
+( forelimb_biting (( hand_licking ( cheeks_sacks_washing  forelimb_licking ))( nose_washing  head_and_ears_washing )))	150 2 6 4 1449 6 1750 1890 1911 1938 2158 2240 9762 10007 10030 10121 10676 10719
+( hand_licking ( nose_washing (( cheeks_sacks_washing  forelimb_licking ) forelimb_biting )))	151 2 5 4 458 2 9178 9206 9319 9353 9387 22120 22130 22230 22244 22367
+(( fast_nose_washing  head_and_ears_washing )((( cheeks_sacks_washing  forelimb_licking ) abdomen_licking )( non_grooming ( body_shaking  hindlimb_licking ))))	153 2 8 4 2427 11 2180 2240 2351 2371 2607 3098 3134 3141 9272 9292 10030 10121 10201 10580 10653 10736
+(( fast_nose_washing (( cheeks_sacks_washing  forelimb_licking ) abdomen_licking )) genitals_licking )	156 2 5 4 1725 8 2180 2351 2371 2607 3281 4601 4748 4762 4821 5223
+( chin_washing ( hand_licking (( nose_washing  head_and_ears_washing )((( cheeks_sacks_washing  forelimb_licking ) abdomen_licking )( non_grooming ( body_shaking  hindlimb_licking ))))))	158 2 10 6 3248 14 2069 2137 2158 2240 2351 2371 2607 3098 3134 3141 8562 9178 9206 9292 10030 10121 10201 10580 10653 10736
+(( nose_washing  fast_nose_washing )(((( hand_licking  cheeks_sacks_washing ) forelimb_licking ) abdomen_licking ) genitals_licking ))	160 2 7 5 1986 9 2158 2180 2235 2351 2371 2607 3281 4362 4414 4626 4748 4762 4821 5223

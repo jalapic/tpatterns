@@ -1,0 +1,15 @@
+Format (Spearators: one TAB after terminals then space); terminal_string TAB id n length levels duration %duration	
+( cheeks_sacks_washing  forelimb_licking )	12 11 2 1 869 8 399 432 972 1015 1577 1614 2780 2814 4796 4938 5057 5170 5460 5475 5687 5787 6170 6346 8849 8890 9108 9232
+( fast_nose_washing  flank_licking )	13 4 2 1 403 4 527 628 1139 1202 6273 6470 8179 8217
+( genitals_licking  non_grooming )	16 3 2 1 112 1 8464 8508 10144 10165 10218 10262
+( head_and_ears_washing  flank_licking )	18 4 2 1 329 3 539 628 1158 1202 6302 6470 8193 8217
+( head_and_ears_washing  forelimb_licking )	19 10 2 1 493 5 426 432 539 578 3127 3180 5208 5238 5324 5357 5424 5475 5655 5787 6302 6346 9358 9395 9475 9533
+( nose_eyes_washing  forelimb_licking )	23 5 2 1 286 3 2537 2558 2763 2814 6041 6080 8959 8978 9081 9232
+( genitals_licking ( hindlimb_biting  non_grooming ))	26 2 3 2 127 1 10144 10154 10165 10218 10284 10322
+( non_grooming ( head_and_ears_washing  forelimb_licking ))	28 2 3 2 203 2 5635 5655 5787 9346 9358 9395
+( nose_eyes_washing ( cheeks_sacks_washing  forelimb_licking ))	29 2 3 2 204 2 2763 2780 2814 9081 9108 9232
+( nose_eyes_washing ( cheeks_sacks_washing ( head_and_ears_washing  hand_licking )))	31 2 4 3 388 4 2763 2780 2914 2935 6041 6170 6225 6255
+(( fast_nose_washing  head_and_ears_washing ) abdomen_licking )	32 5 3 2 1000 10 97 136 147 527 539 683 1139 1158 1480 6273 6302 6579 8179 8193 8321
+( nose_eyes_washing ( hand_licking ( head_and_ears_washing  forelimb_licking )))	34 2 4 3 724 7 2763 3096 3127 3180 6041 6255 6302 6346
+(( nose_eyes_washing  forelimb_licking )( cheeks_sacks_washing ( head_and_ears_washing  hand_licking )))	35 2 5 3 614 6 2537 2558 2780 2914 2935 6041 6080 6170 6225 6255
+(( cheeks_sacks_washing ( fast_nose_washing ( head_and_ears_washing  forelimb_licking ))) flank_licking )	36 2 5 4 531 5 399 527 539 578 628 6170 6273 6302 6346 6470

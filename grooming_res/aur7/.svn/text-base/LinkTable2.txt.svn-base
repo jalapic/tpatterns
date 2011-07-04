@@ -1,0 +1,15 @@
+	ID	Event Type	Freq	Nlinked									
+	1	abdomen_licking	14	0									
+	2	cheeks_sacks_washing	10	5	5	9	10	13	14				
+	3	fast_nose_washing	10	6	4	5	9	10	11	13			
+	4	flank_licking	8	4	9	11	12	13					
+	5	forelimb_biting	21	7	2	8	9	10	12	13	14		
+	6	forelimb_licking	4	1	13								
+	7	genitals_licking	1	0									
+	8	hand_biting	3	4	5	9	13	14					
+	9	hand_licking	17	9	2	3	4	5	8	10	11	13	14
+	10	head_and_ears_washing	8	6	2	4	5	9	11	14			
+	11	hindlimb_licking	7	2	12	14							
+	12	non_grooming	15	6	4	5	6	9	13	14			
+	13	nose_eyes_washing	14	7	2	5	6	8	9	10	14		
+	14	nose_washing	12	8	2	3	4	5	9	10	11	13	

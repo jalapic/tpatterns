@@ -1,0 +1,20 @@
+	ID	Event Type	E1	E2	E3	E4	E5	E6	E7	E8	E9	E10	E11	E12	E13	E14	E15	E16	E17	E18	E19
+	1	abdomen_licking							2	2											
+	2	back_licking																			
+	3	body_shaking																			
+	4	body_sniffing													2				1		
+	5	cheeks_sacks_washing		2								1									
+	6	chin_washing																			
+	7	fast_nose_washing	2							1						1					
+	8	flank_licking	2																		
+	9	forelimb_biting										1									
+	10	forelimb_licking		2							1										
+	11	genitals_licking																			
+	12	hand_biting																			
+	13	hand_licking					2		2			2				1					
+	14	head_and_ears_washing	2				2			1		2									
+	15	hindlimb_biting																			
+	16	hindlimb_licking																			
+	17	non_grooming					3					2			2	3		1		1	
+	18	nose_eyes_washing					3					1			3	3					
+	19	nose_washing																			

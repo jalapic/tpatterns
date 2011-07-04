@@ -1,0 +1,86 @@
+%% ---------------------------------------------------------------------------
+\documentclass[openany, twoside, a5paper, 9pt]{extbook}
+%% ---------------------------------------------------------------------------
+\usepackage[utf8x]{inputenc}
+\usepackage[english, russian]{babel}
+%% ---------------------------------------------------------------------------
+\usepackage{indentfirst}
+\frenchspacing
+%% ---------------------------------------------------------------------------
+\usepackage{url}
+%% ---------------------------------------------------------------------------
+\usepackage[dvips]{graphicx}
+%% ---------------------------------------------------------------------------
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{bm}
+%% ---------------------------------------------------------------------------
+\sloppy
+%% ---------------------------------------------------------------------------
+% a5paper: 148 x 210
+% print area: 110 x 180
+% top = bottom = (210 - 180) / 2 = 15
+% left = right = (148 - 110) / 2 = 19
+\usepackage[%
+    left=1.9cm,%
+    top=1.5cm,%
+    right=1.9cm,%
+    bottom=1.5cm,%
+    headsep=0.2cm,%
+    footskip=0.5cm,%
+    includehead,%
+    includefoot]{geometry}
+%% ---------------------------------------------------------------------------
+\newcommand{\YEAR}{2011}
+\newcommand{\Booktitle}{Тезисы лучших дипломных работ факультета ВМК МГУ \YEAR{} года}
+%% ---------------------------------------------------------------------------
+\usepackage{fancyhdr}
+\lhead{}
+\chead[Кафедра АЯ]{\Booktitle}
+\rhead{}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\pagestyle{fancy}
+%% ---------------------------------------------------------------------------
+\makeatletter
+\newcommand\Title[6]{%
+    \par
+    \begin{centering}
+        \medskip
+        {
+            \Large
+            \textbf{\textsc{#1}} \\
+        }
+        {
+            \textbf{\textit{#2}} \\
+        }
+        {
+            \small
+            \textit{E-mail: #4} \\
+            \textit{#5} \\
+            \textit{#6} \\
+        }
+        \smallskip
+    \end{centering}
+    \@afterheading
+}
+\makeatother
+%% ---------------------------------------------------------------------------
+\makeatletter
+\newcommand{\References}{
+    \medskip
+    \centerline{\textbf{\bibname}}
+    \nopagebreak
+    \medskip
+    \@afterheading
+}
+\makeatother
+%% ---------------------------------------------------------------------------
+\begin{document}
+%% ---------------------------------------------------------------------------
+\input{mythesis}
+%% ---------------------------------------------------------------------------
+\end{document}
+%% ---------------------------------------------------------------------------

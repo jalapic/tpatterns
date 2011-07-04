@@ -1,0 +1,152 @@
+\documentclass[12pt]{letter}
+\usepackage{amssymb,amsmath}
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx, graphics, epsfig}
+\usepackage{epstopdf}
+\usepackage{ifpdf}   
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage[english,russian]{babel}
+%\usepackage[pdftex,unicode]{hyperref}
+%\usepackage[noend]{algorithm}
+%\usepackage[noend]{algpseudocode}
+\usepackage{multicol}
+\textheight=24cm
+\textwidth=16cm
+\oddsidemargin=0pt
+\topmargin=-1.5cm
+\parindent=24pt
+\parskip=0pt
+\tolerance=2000
+\flushbottom
+\def\baselinestretch{1.2} 
+
+\author{Вишневский~Валерий~Викторович}
+
+\begin{document}
+\newcommand{\Var}{\mathsf{var}}
+\newcommand{\Erf}{\mathsf{erf}}
+%\thispagestyle{empty}
+
+Итак, поменялось с предыдущего раза:
+\begin{itemize}
+ \item распределение случайной величины $x$;
+\item я теперь правильно считаю дисперсию $\xi$;
+\item $g_{\mu,\sigma}(x)$~--- теперь именно плотность, а не просто экспонента;
+\item для подобра $\mu$ и $\sigma$ я беру только $\mu$ равные $x_i$.
+Последнее можно как-то обосновать, что $\log\sum\exp(x_i)$~--- это softmax по множеству
+${x_i}$.
+\end{itemize}
+ 
+Пусть случайная величина $x_L\,\sim \mathcal{U}[0,N_t]$ представляет собой точки концов левого паттерна,
+а $x_R\,\sim \mathcal{U}[0,N_t] $ точки начал правого паттерна. Тогда плотность распределения
+межточечного расстояния 
+$$
+p(x_R-x_L\mid x_L < x_R ) = p_{LR}(x) =
+\begin{cases}
+  (M-x)\,\frac2{M^2} , & x \in [0,M]; \\
+  0, & x \not\in [0,M].
+\end{cases} 
+$$
+Это можно показать из свертки двух с.в.~--- потом вобью это в сам диплом.
+Итак, наша сумма $k$:
+\[
+\begin{aligned}
+k&=\sum_{i=1}^N w_ig_{\mu,\sigma}(x_i)= \sum_{i=1}^N \xi_i,   \\
+w_i&=\alpha_i\beta_i, \\
+x_i &\sim p_{LR}, \\
+g_{\mu,\sigma}(x_i)&=\frac{1}{\sqrt{2\pi}\sigma}\exp\left(- \frac{(x_i-\mu)^2}{2\sigma^2} \right) 
+\end{aligned}
+\]
+
+Здесь:
+$$
+\begin{aligned}
+N &\text{--- количество точек в распределении};\\
+M &\text{--- максимальное расстояние между двумя точками. Не окно!}
+
+\end{aligned}
+$$
+
+Считаем моменты.
+$$
+\begin{aligned}
+\mathbb{E} \left[ g_{\mu,\sigma} \right] &= \int\limits_{0}^{M}g_{\mu,\sigma}(x)\,p_{LR}(x)\,dx=
+\int\limits_{0}^{M}g_{\mu,\sigma}(x)\,(M-x)\,\frac{2}{M^2}\,dx \approx \\
+&\approx \frac2M \, \frac1{\sqrt{2\pi}\,\sigma}  \int\limits_{-\infty}^{+\infty}\exp\left( -\frac{(x-\mu)^2}{2\sigma^2} \right) \, dx 
+- \frac2{M^2} \, \frac1{\sqrt{2\pi}\,\sigma} \int\limits_{-\infty}^{+\infty}x\,\exp\left( -\frac{(x-\mu)^2}{2\sigma^2} \right) \, dx = \\
+&=\frac2M \left(1-\frac{\mu}M\right).
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+\mathbb{E} \left[ g^2_{\mu,\sigma} \right] &= \int\limits_{0}^{M}g^2_{\mu,\sigma}(x)\,p_{LR}(x)\,dx=
+\int\limits_{0}^{M}g^2_{\mu,\sigma}(x)\,(M-x)\,\frac{2}{M^2}\,dx \approx \\
+&\approx \frac2M \, \frac1{2\pi\sigma^2}  \int\limits_{-\infty}^{+\infty}\exp\left( -\frac{(x-\mu)^2}{\sigma^2} \right) \, dx 
+- \frac2{M^2} \, \frac1{2\pi\sigma^2} \int\limits_{-\infty}^{+\infty}x\,\exp\left( -\frac{(x-\mu)^2}{\sigma^2} \right) \, dx = \\
+&=\frac1{M\sqrt{\pi}\,\sigma} \left(1-\frac{\mu}M\right).
+\end{aligned}
+$$
+
+Считаем дисперсию.
+$$
+\Var \left[ g_{\mu,\sigma} \right] = \mathbb{E} \left[ g^2_{\mu,\sigma} \right]  - \left( \mathbb{E} \left[ g_{\mu,\sigma} \right] \right)^ 2 = 
+\left( 1-\frac{\mu}{M} \right)\,\left( \frac1{M\sqrt{\pi}\,\sigma} - \frac{\mu}{M^2} \left( 1- \frac{\mu}{M} \right) \right).
+$$
+
+Теперь параметры самой с.в. $\xi_i$.
+$$
+\mathbb{E}\left[ \xi_i \right] = \mathbb{E}\left[ w g_{\mu,\sigma}(x) \right] = 
+\mathbb{E}\left[ w_i\right]    \mathbb{E}\left[  g_{\mu,\sigma}(x_i) \right] \approx \overline{w} \: \frac2M \left(1-\frac{\mu}M\right).
+$$
+
+Здесь $\overline{w}$~--- выборочное среднее наших весов, $\hat{w}$~--- выборочная дисперсия весов. Тогда запишем 
+дисперсию произведения независимых случайных величин:
+
+$$
+\Var \left[ \xi_i \right] = \Var \left[ w\, g_{\mu,\sigma} \right] = 
+\left( \mathbb{E}\left[ g_{\mu,\sigma} \right]\right)^2 \hat{w} +
+\mathbb{E}\left[ g_{\mu,\sigma} \right] \overline{w}^2 + \hat{w}\, \Var\left[ g_{\mu,\sigma} \right].
+$$
+
+Тогда, по Ц.П.Т.:
+$$
+\begin{aligned}
+&\sum_{i=1}^N \xi_i = k \sim \mathcal{N}\left(\mu_\ast, \sigma_\ast^2 \right), \:\text{где} \\
+&\mu_\ast= N\,  \mathbb{E}\left[ \xi_i \right], \\
+&\sigma_\ast^2 =  N \, \Var \left[ \xi_i \right].
+\end{aligned}
+$$
+
+Ну а теперь, берем квантиль этого нормального распределения, сравниваем с $k$~--- тут все ясно.
+
+Одна проблема~--- замена пределов интегрирования(для $\mathbb{E} \left[ g_{\mu,\sigma} \right]$ и
+$\mathbb{E} \left[ g^2_{\mu,\sigma} \right]$) с 0 до M на всю прямую, дает плохой результат, когда
+$\mu$ близко к $M$(близость к нулю не на столько критична, так как $p_{LR}(x)$ имеет большую плотность около 0). Я попробовал взять точный интеграл, через функцию ошибок. Пока не проверял эти формулы в
+деле, и ни коим образом не прошу Вас проверять их правильность.
+
+$$
+\begin{aligned}
+\mathbb{E} \left[ g_{\mu,\sigma} \right] =& \int\limits_{0}^{M}g_{\mu,\sigma}(x)\,(M-x)\,\frac{2}{M^2}\,dx = \\
+=& \frac1M \left[  \Erf\left( \frac{\mu-M}{\sqrt{2}\,\sigma}\right) - \Erf\left( \frac{\mu}{\sqrt{2}\,\sigma}\right)  \right] -\\
+&-\frac{ \sqrt2 }{ M^2\,\sqrt\pi } \left[ 
+\mu\sqrt\frac\pi2 \, \Erf \left( -\frac{M}{\sqrt2\,\sigma} \right) - \sigma\left( \exp\left(-\frac{M^2}{2\sigma^2}\right) - 1\right)
+\right].
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+\mathbb{E} \left[ g^2_{\mu,\sigma} \right] =& \int\limits_{0}^{M}g^2_{\mu,\sigma}(x)\,(M-x)\,\frac{2}{M^2}\,dx = \\
+=& \frac1{2M\sqrt\pi\,\sigma} \left[  \Erf\left( \frac{\mu-M}{\sigma}\right) - \Erf\left( \frac{\mu}{\sigma}\right)  \right] -\\
+&-\frac1{ 2M^2\,\pi\sigma } \left[ 
+\mu\sqrt\pi \, \Erf \left( -\frac{M}{\sigma} \right) - \sigma\left( \exp\left(-\frac{M^2}{\sigma^2}\right) - 1\right)
+\right]
+\end{aligned}
+$$
+
+
+\newpage
+\end{document}

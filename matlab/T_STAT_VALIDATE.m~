@@ -1,0 +1,17 @@
+function [ev] = T_GENERATE_PATTERN( Nt, events, nvalidations )
+
+event_freq = zeros( 1, size( events, 2 ) );
+% get frequences of events
+for i = 1 : size( events, 2 )
+    event_freq(i) = size( events(i).indexes, 2 ) / Nt;
+end
+
+
+for i = 1 : nvalidations
+    %% Generate random time series, according to frequences of events
+    new_events = events;
+    for j = 1 : size( events, 2 )
+        new_events(i).indexes = fix( rand(1, size(events
+    end
+    
+end

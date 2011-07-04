@@ -1,0 +1,2 @@
+	auratus1	auratus2	auratus3	auratus7	auratus8
+Sample1	71	56	61	241	422

@@ -1,0 +1,74 @@
+\documentclass[12pt]{article}
+%\usepackage[cp1251]{inputenc}
+% %\usepackage[russian]{babel}
+\usepackage{amssymb,amsmath}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian,english]{babel}
+\usepackage[pdftex,unicode]{hyperref}
+
+\textheight=24cm
+\textwidth=16cm
+\oddsidemargin=0pt
+\topmargin=-1.5cm
+\parindent=24pt
+\parskip=0pt
+\tolerance=2000
+\flushbottom
+\def\baselinestretch{1.5} 
+
+\title{Поиск скрытых поведенческих паттернов}
+\author{Вишневский~Валерий~Викторович}
+\date{7 мая 2009}
+
+\begin{document}
+
+\begin{titlepage}
+  \begin{center}
+  \textsc{\large{Московский Государственный Университет}
+  \\[.5cm]
+  \normalsize{Факультет Вычислительной Математики и Кибернетики\\
+  Кафедра Математических Методов Прогнозирования}}
+  \\[4cm]
+ 
+  \large{Курсовая Работа }\\[1.5cm]
+ 
+  {\Large {Поиск скрытых поведенческих паттернов}} \\[3cm]
+  \begin{flushright}
+    Вишневский Валерий\\
+    группа 317\\
+    научный руководитель: Ветров Дмитрий Петрович
+  \end{flushright}
+  \vfill
+  
+  Москва, 2009
+  \end{center}
+ \end{titlepage}
+
+
+%\thispagestyle{empty}
+
+\begin{abstract}
+В работе рассматривается алгоритм поиска скрытых поведенческих закономерностей (hidden T-Patterns), которые сложно обнаружить визуально, 
+или с помощью стандартных статистических методов. 
+Проводится анализ параметров алгоритма. Предложенный метод поиска паттернов основывается на определении взаимосвязи между парами событий 
+во временных рядах, названной критическим отношением(critical interval relation). Поиск производится снизу вверх: алгоритм сначала находит простые
+закономерности, потом, путем соединения простых, образуются более сложные паттерны. На каждом шаге проводится отбор самых существенных и полных паттернов.
+Данный алгоритм был реализован на языке Си в виде консольного приложения и модуля Matlab.
+\end{abstract}
+
+\tableofcontents
+%\section{Введение}
+\input{part1.tex}
+
+ 
+
+\begin{thebibliography}{00} % библиография
+\bibitem{lvovsky94latex}
+Львовский~С.~М. Набор и вёрстка в пакете~\LaTeX.~---
+М., Космосинформ, 1994.
+\bibitem{knuth93texbook}
+Кнут~Д. Всё про \TeX.~--- Протвино, RD\TeX, 1993.
+\end{thebibliography}
+\end{document}

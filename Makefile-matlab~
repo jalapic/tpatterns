@@ -1,0 +1,6 @@
+#ee
+Project: t_patterns_matlab
+$CFLAGS = -o -DMATLAB_ENABLE -fopenmp
+
+t_patterns_matlab: 
+	/home/valera/matlab/bin/mex $(CFLAGS) CFLAGS="($CFLAGS) -fopenmp" LDFLAGS="\$LDFLAGS -fopenmp" -outdir matlab src/mexPattern.c

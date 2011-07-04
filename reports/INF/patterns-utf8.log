@@ -1,0 +1,240 @@
+This is TeX, Version 3.1415926 (TeX Live 2009/Arch Linux) (format=tex 2010.10.5)  5 OCT 2010 16:56
+**patterns-utf8.tex
+(./patterns-utf8.tex
+! Undefined control sequence.
+l.1 \documentclass
+                  [smaller]{beamer}
+? 
+! Undefined control sequence.
+l.2 \usepackage
+               {beamerarticle}
+? 
+! Undefined control sequence.
+l.3 \mode
+         <presentation> {
+? 
+! Undefined control sequence.
+l.4   \usetheme
+               [width=80pt]{Berkeley}
+? 
+! Undefined control sequence.
+l.5   \useinnertheme
+                    {circles}
+? 
+! Undefined control sequence.
+l.6   \usecolortheme
+                    {sidebartab}
+? 
+! Undefined control sequence.
+l.7   \setbeamercolor
+                     {structure}{fg=blue}
+? 
+! Undefined control sequence.
+l.16 \usepackage
+                [utf8]{inputenc}
+? 
+! Undefined control sequence.
+l.17 \usepackage
+                [english,russian]{babel}
+? 
+! Undefined control sequence.
+l.30 \usepackage
+                {listings}
+? 
+! Undefined control sequence.
+l.31 \usepackage
+                [pdftex,unicode]{hyperref}
+? 
+! Undefined control sequence.
+l.33 \usepackage
+                [noend]{algorithm}
+? 
+! Undefined control sequence.
+l.34 \usepackage
+                [noend]{algpseudocode}
+? 
+! Undefined control sequence.
+l.38 \newcommand
+                {\eA}{ {\bf A} }
+? 
+! Undefined control sequence.
+l.38 \newcommand{\eA
+                    }{ {\bf A} }
+? 
+! Undefined control sequence.
+l.39 \newcommand
+                {\eB}{ {\bf B} }
+? 
+! Undefined control sequence.
+l.39 \newcommand{\eB
+                    }{ {\bf B} }
+? 
+! Undefined control sequence.
+l.45 \usefonttheme
+                  {serif}
+? 
+! Undefined control sequence.
+l.50 \title
+           {Fuzzy patterns sdcfsd } % (optional, use only with long paper ti...
+
+? 
+! Undefined control sequence.
+l.52 \author
+            [^^d0^^92^^d0^^b8^^d1^^88^^d0^^bd^^d0^^b5^^d0^^b2^^d1^^81^^d0^^b...
+
+? 
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^92 in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^b8 in font cmr10!
+Missing character: There is no ^^d1 in font cmr10!
+Missing character: There is no ^^88 in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^bd in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^b5 in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^b2 in font cmr10!
+Missing character: There is no ^^d1 in font cmr10!
+Missing character: There is no ^^81 in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^ba in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^b8 in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^b9 in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^92 in font cmr10!
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \mskip 
+\,->\mskip 
+           \thinmuskip 
+l.53 {^^d0^^92.\,
+                 ^^d0^^92.\,^^d0^^92^^d0^^b8^^d1^^88^^d0^^bd^^d0^^b5^^d0^^b2...
+
+? 
+! Undefined control sequence.
+l.53 ...0^^b2^^d1^^81^^d0^^ba^^d0^^b8^^d0^^b9\inst
+                                                  {1}}
+? 
+! Extra }, or forgotten $.
+l.53 ...2^^d1^^81^^d0^^ba^^d0^^b8^^d0^^b9\inst{1}}
+                                                  
+? 
+! Undefined control sequence.
+l.54 \institute
+               [^^d0^^9c^^d0^^93^^d0^^a3 ^^d0^^92^^d0^^9c^^d0^^9a, ^^d0^^9c^...
+
+? 
+! Undefined control sequence.
+l.56   \inst
+            {1}
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+<to be read again> 
+                   \par 
+l.59 
+     
+? 
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^92 in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^92 in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^b8 in font cmr10!
+Missing character: There is no ^^d1 in font cmr10!
+Missing character: There is no ^^88 in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^bd in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^b5 in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^b2 in font cmr10!
+Missing character: There is no ^^d1 in font cmr10!
+Missing character: There is no ^^81 in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^ba in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^b8 in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^b9 in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^9c in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^93 in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^a3 in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^92 in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^9c in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^9a in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^9c in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^9c in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^9f in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^9c in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^93 in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^a3 in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^92 in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^9c in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^b8 in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^9a in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^ba in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^b0 in font cmr10!
+Missing character: There is no ^^d1 in font cmr10!
+Missing character: There is no ^^84 in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^9c in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^9c in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^9f in font cmr10!
+! Undefined control sequence.
+l.60 \date
+          [Patterns] % (optional, should be abbreviation of conference name)
+? 
+! Undefined control sequence.
+l.66 \AtBeginSubsection
+                       [] {
+? 
+! Undefined control sequence.
+l.67   \begin
+             {frame}<beamer>
+? 
+! Undefined control sequence.
+l.68     \frametitle
+                    {^^d0^^9f^^d0^^bb^^d0^^b0^^d0^^bd}
+? 
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^9f in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^bb in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^b0 in font cmr10!
+Missing character: There is no ^^d0 in font cmr10!
+Missing character: There is no ^^bd in font cmr10!
+! Undefined control sequence.
+l.69     \tableofcontents
+                         [currentsection,currentsubsection]
+? 
+[1] )
+(\end occurred inside a group at level 2)
+Output written on patterns-utf8.dvi (1 page, 752 bytes).

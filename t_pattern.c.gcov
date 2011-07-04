@@ -1,0 +1,506 @@
+        -:    0:Source:src/t_pattern.c
+        -:    0:Graph:obj/t_pattern.gcno
+        -:    0:Data:obj/t_pattern.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:#include "t_pattern.h"
+        -:    2:
+      222:    3:t_pattern_list* add_pattern(t_pattern_list *pl, int *events, int nevents )
+        -:    4:{
+        -:    5:    t_pattern_list* it;
+      222:    6:    for ( it =  pl; it->next != NULL; it = it->next);
+      222:    7:    it->next = ( t_pattern_list* ) malloc( sizeof( t_pattern_list ) );
+      222:    8:    it->next-> pat.new_one = 1;
+      222:    9:    it->next-> pat.N = 0;
+      222:   10:    it->next-> pat.significance = 0;
+      222:   11:    it->next-> pat.nevents = nevents;
+      222:   12:    it->next-> pat.events = (int*) malloc( sizeof(int) *nevents );
+      222:   13:    memcpy( it->next-> pat.events, events, sizeof(int) * nevents );
+        -:   14:    
+      222:   15:    it->next->next = NULL;
+      222:   16:    return it->next;
+        -:   17:}	
+        -:   18:
+    #####:   19:void delete_pattern(t_pattern_list *pl, t_pattern *el)
+        -:   20:{
+        -:   21:    t_pattern_list *prev;
+        -:   22:    
+    #####:   23:    for (prev = pl, pl = pl->next; pl != NULL; pl = pl->next, prev = prev->next )
+        -:   24:    {
+    #####:   25:        if ( &pl->pat == el )
+    #####:   26:            prev->next = pl->next; 
+        -:   27:    }
+    #####:   28:    free( el->events );
+    #####:   29:    free ( el );
+    #####:   30:}
+        -:   31:
+        9:   32:void conc_patterns(t_pattern_list *pl1, t_pattern_list *pl2)
+        -:   33:{
+        9:   34:    for ( pl1 = pl1->next; pl1->next != NULL; pl1 = pl1->next );
+        9:   35:    pl1->next = pl2->next;
+        9:   36:}
+        -:   37:
+    62764:   38:int t_is_subpattern(t_pattern* Lp, t_pattern* Rp)
+        -:   39:{
+        -:   40:    int i,j,c;
+    62764:   41:    int is_substr = 1;
+   328848:   42:    for ( i = 0; i < Rp->nevents; i++)
+        -:   43:    {
+   266771:   44:        if ( Lp->events[0] == Rp->events[i] )
+        -:   45:        {
+    24450:   46:            is_substr = 0;
+    24450:   47:            c = 0;
+   109071:   48:            for ( j = 0; j < Rp->nevents - i; j++ )
+        -:   49:            {
+        -:   50:                
+    85308:   51:                if ( Lp->events[c] == Rp->events[i+j] ) c++; 
+    85308:   52:                if ( c == Lp->nevents ) 
+        -:   53:                {
+      687:   54:                    is_substr = 1; 
+      687:   55:                    break;
+        -:   56:                }
+        -:   57:            }
+    24450:   58:            if ( is_substr ) return 1;
+        -:   59:        }
+        -:   60:    }
+    62077:   61:    return 0;
+        -:   62:}
+        -:   63:
+        -:   64:int used = 0;
+  5230392:   65:double t_calc_prior_probability (unsigned int Nt, unsigned int Na, unsigned int Nb, unsigned int Nab, unsigned int d, int method)
+        -:   66:{
+        -:   67:    /**
+        -:   68:    * TODO: calculate probability,if it is getting bigger than smth.... bail out
+        -:   69:    * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        -:   70:    *  Normal and poisson aproximations - when probability is large ==> we don't care!
+        -:   71:    * 
+        -:   72:    * */
+        -:   73:    unsigned int i, j;
+  5230392:   74:    double acc=0, t, Pb, Pnb, Pb_d, Pnb_d, logfac;
+  5230392:   75:    Pb = (double) Nb/Nt;
+  5230392:   76:    Pnb = 1 - Pb;
+  5230392:   77:    Pb_d = pow( Pb, d );
+  5230392:   78:    Pnb_d = pow ( Pnb, d );
+        -:   79:    
+  5230392:   80:    if ( ( method & T_PCALC_NORMRND ) && 
+    #####:   81:        ( Na * ( 1 - Pnb_d ) > 10 ) && ( Na * Pnb_d > 10) )
+        -:   82:    { 
+    #####:   83:        used++;
+    #####:   84:        for ( i = 0; i < Nab; i++)
+        -:   85:        {
+    #####:   86:            t=1;
+    #####:   87:            t *= norm_rnd(i, Na * ( 1 - Pnb_d ), Na * ( 1 - Pnb_d ) * Pnb_d );
+    #####:   88:            acc += t;
+        -:   89:        }
+        -:   90:    }
+  5230392:   91:    else if ( ( method & T_PCALC_POISSON  ) &&
+    #####:   92:                ( ( ( 1 - Pnb_d ) <= 0.07 ) &&  ( Na*(1-Pnb_d) <= 6 ) ) )
+        -:   93:    {
+    #####:   94:        used++;
+    #####:   95:        for ( i = 0; i < Nab; i++)
+        -:   96:        {
+    #####:   97:            t=1;
+    #####:   98:            if ( logfac_table_size ) 
+    #####:   99:                logfac = logfac_table[i];
+        -:  100:            else
+    #####:  101:                logfac = log_fac( i );
+    #####:  102:            t *= exp( - (double)(1-Pnb_d)*Na - logfac + i * log((double)(1-Pnb_d)*Na) );
+    #####:  103:            acc += t;
+        -:  104:        }
+        -:  105:    }
+  5230392:  106:    else if ( ( method & T_PCALC_TABULATED_FULL ) && C_iz_N_po_k_table_K )
+        -:  107:    {
+    #####:  108:        start = clock();
+    #####:  109:        for ( i = 0; i < Nab; i++)
+        -:  110:        {
+        -:  111:            
+    #####:  112:            t=1;
+    #####:  113:            t = C_iz_N_po_k_table[ Na * C_iz_N_po_k_table_K + i ]; /*exp( logfac_table[ Na ] - logfac_table[ i ] - logfac_table[ Na - i ] );*/
+    #####:  114:            t *= pow( 1 - Pnb_d, i );
+    #####:  115:            t *= pow( Pnb_d, Na - i );
+    #####:  116:            acc += t;
+        -:  117:        }	
+    #####:  118:        stop =clock();
+    #####:  119:        time_calc_in+=(stop-start)/ CLOCKS_PER_SEC;
+        -:  120:
+        -:  121:    } 
+        -:  122:    else /*if (  method & T_PCALC_T_FULL_MEAN  )*/ /*  */
+        -:  123:    {
+  5230392:  124:        acc = 0;
+        -:  125:        //#pragma omp parallel for reduction(+:acc)
+ 18200250:  126:        for ( i = 0; i < Nab; i++)
+        -:  127:        {
+ 12969858:  128:            t=1;
+ 12969858:  129:            t = C_iz_N_po_k(Na, i);
+ 12969858:  130:            t *= pow( 1 - Pnb_d, i );
+ 12969858:  131:            t *= pow( Pnb_d, Na - i );
+ 12969858:  132:            acc += t;
+        -:  133:        }
+        -:  134:    }
+  5230392:  135:    return 1 - acc;
+        -:  136:}
+        -:  137:
+      210:  138:void t_construct_pattern(t_pattern_list *pl, t_pattern *Lp, t_pattern *Rp, double_series *possible_ds, int Nab, double P_prior, int d1, int d2)
+        -:  139:{
+        -:  140:    t_pattern_list *tmp;
+        -:  141:    int *events;
+        -:  142:    int i,k, max_k;
+        -:  143:    double_series *CI;
+      210:  144:    events = (int*) malloc( ( Lp->nevents + Rp->nevents ) * sizeof( int ) );
+      210:  145:    CI = ( double_series* ) malloc ( ( Lp->nevents + Rp->nevents - 1 ) * sizeof( double_series ) );
+      210:  146:    memcpy( events, Lp->events, Lp->nevents * sizeof( int ) );
+      210:  147:    memcpy( &events[ Lp->nevents ], Rp->events, Rp->nevents * sizeof( int ) );
+      210:  148:    if ( Lp->nevents > 1 ) memcpy( CI, Lp->CI, (Lp->nevents - 1) * sizeof( double_series ) );
+      210:  149:    if ( Rp->nevents > 1 ) memcpy( &CI[ Lp->nevents ], Rp->CI, (Rp->nevents - 1) * sizeof( double_series ) );
+      210:  150:    CI[ Lp->nevents - 1 ].l = d1;
+      210:  151:    CI[ Lp->nevents - 1 ].r = d2;
+      210:  152:    tmp = add_pattern( pl, events, Lp->nevents + Rp->nevents );
+      210:  153:    free( events );
+      210:  154:    tmp->pat.ind = ( double_series*) malloc( sizeof(double_series) * Nab );
+      210:  155:    tmp->pat.N = Nab;
+      210:  156:    tmp->pat.significance = P_prior;
+      210:  157:    tmp->pat.d1 = d1;
+      210:  158:    tmp->pat.d2 = d2;
+      210:  159:    tmp->pat.CI = CI;
+        -:  160:    
+      210:  161:    max_k = 0;
+      210:  162:    k=0;
+     1610:  163:    for (i = 0; i < Lp->tree_len; i++)
+        -:  164:    {
+     1400:  165:        if ( Lp->tree[i] == -1 ) k++;
+        -:  166:        else
+        -:  167:        {
+      618:  168:            max_k = ( k > max_k ) ? k : max_k;
+      618:  169:            k = 0;
+        -:  170:        }
+        -:  171:    }
+      460:  172:    for (i = 0; i < Rp->tree_len; i++)
+        -:  173:    {
+      250:  174:        if ( Rp->tree[i] == -1 ) k++;
+        -:  175:        else
+        -:  176:        {
+      229:  177:            max_k = ( k > max_k ) ? k : max_k;
+      229:  178:            k = 0;
+        -:  179:        }
+        -:  180:    }
+      210:  181:    tmp->pat.tree_len = Lp->tree_len + Rp->tree_len + max_k + 1;
+      210:  182:    tmp->pat.tree = (int*)malloc( sizeof(int) * tmp->pat.tree_len );
+      210:  183:    for ( i = 0; i < Lp->tree_len; i++ ) tmp->pat.tree[i] = Lp->tree[i]; 
+      210:  184:    for ( i = Lp->tree_len; i < Lp->tree_len + max_k + 1; i++ ) tmp->pat.tree[i] = -1;
+      210:  185:    for ( i = Lp->tree_len + max_k + 1; i < Lp->tree_len + max_k + 1 + Rp->tree_len; i++ ) tmp->pat.tree[i] = Rp->tree[ i - Lp->tree_len - max_k - 1 ];
+        -:  186:    
+      210:  187:    memcpy( tmp->pat.ind, possible_ds, Nab * sizeof( double_series ) );
+      210:  188:}
+        -:  189:
+    16323:  190:int t_is_equal_ds(double_series* ds1, int n1, double_series* ds2, int n2)
+        -:  191:{
+        -:  192:    int i;
+    16323:  193:    if ( n1 != n2 ) return 0;
+    #####:  194:    for ( i = 0; i < n1; i++)
+    #####:  195:        if ( ( ds1[i].l != ds2[i].l ) || ( ds1[i].r != ds2[i].r ) ) return 0;
+    #####:  196:    return 1;
+        -:  197:}
+        -:  198:
+      687:  199:int t_is_intersec(double_series* dsL, double_series* dsR, int n)
+        -:  200:{
+        -:  201:    int i;
+     1541:  202:    for ( i = 0; i < n; i++ )
+        -:  203:    {
+     1468:  204:        if ( ( dsL[i].l > dsR[i].r ) || ( dsL[i].r < dsR[i].l ) ) return 0;
+        -:  205:    } 
+       73:  206:    return 1;
+        -:  207:}
+        -:  208:
+    #####:  209:int contain_same_events(t_pattern* Lp, t_pattern* Rp)
+        -:  210:{
+        -:  211:    int i,j;
+    #####:  212:    for ( i = 0; i < Rp->nevents; i++ )
+    #####:  213:        for ( j = 0; j < Lp->nevents; j++ )
+    #####:  214:            if ( Rp->events[i] == Lp->events[j] ) return 1;
+    #####:  215:    return 0;
+        -:  216:}
+        -:  217:
+    #####:  218:int t_is_equal_events( t_pattern* Lp, t_pattern* Rp1, t_pattern* Rp2 )
+        -:  219:{
+        -:  220:    int i, j;
+    #####:  221:    if ( Lp->nevents != Rp1->nevents + Rp2->nevents ) return 0;
+    #####:  222:    for ( i = 0; i < Rp1->nevents; i++ )
+    #####:  223:        if ( Lp->events[i] != Rp1->events[i] ) return 0;
+        -:  224:    
+    #####:  225:    for ( j=0; j < Rp2->nevents; j++ )
+    #####:  226:        if ( Lp->events[ i + j ] != Rp2->events[ j ] ) return 0;
+        -:  227:            
+    #####:  228:    return 1;
+        -:  229:}
+        -:  230:
+        9:  231:int t_construct_pair_pat_array( t_pattern*** LPat_pts, t_pattern*** RPat_pts, int *Npairs, const t_time_series* ts )
+        -:  232:{
+        -:  233:    int i,j, N;
+        -:  234:    t_pattern **L, **R;
+        -:  235:    t_pattern *Lp, *Rp;
+        -:  236:    t_pattern_list *Lpl, *Rpl;
+        -:  237:    //Get number of patterns
+        9:  238:    N = 0;
+        9:  239:    for ( Lpl = ts->patterns->next; Lpl != NULL; Lpl = Lpl->next, N++ );
+        9:  240:    L = ( t_pattern ** ) malloc( sizeof( t_pattern * ) * N * N );
+        9:  241:    R = ( t_pattern ** ) malloc( sizeof( t_pattern * ) * N * N );
+     1020:  242:    for ( i = 0, j =0, Lpl = ts->patterns->next; Lpl != NULL; Lpl = Lpl->next )
+        -:  243:    {
+   134610:  244:        for ( Rpl = ts->patterns->next; Rpl != NULL; Rpl = Rpl->next, i++ )
+        -:  245:        { 
+   133599:  246:            Lp = &Lpl->pat;
+   133599:  247:            Rp = &Rpl->pat;
+   133599:  248:            if (! (Rp->new_one || Lp->new_one ) ) continue; /* We don't want to check same patterns more than once */
+    35303:  249:            if ( ( ! ts->allow_same_events_in_pattern) &&  contain_same_events(Rp, Lp)  ) continue; 
+        -:  250:            
+    35303:  251:            L[ j ] = Lp;
+    35303:  252:            R[ j ] = Rp;
+    35303:  253:            j++;
+        -:  254:        }
+        -:  255:    }
+        9:  256:    N = j;
+        9:  257:    *LPat_pts = ( t_pattern ** ) malloc( sizeof( t_pattern * ) * N );
+        9:  258:    *RPat_pts = ( t_pattern ** ) malloc( sizeof( t_pattern * ) * N );
+        9:  259:    memcpy( *LPat_pts, L, N * sizeof( t_pattern * ) );
+        9:  260:    memcpy( *RPat_pts, R, N * sizeof( t_pattern * ) );
+        9:  261:    *Npairs = N;
+        -:  262:    
+        9:  263:    free( L );
+        9:  264:    free( R );
+        9:  265:    return 0;
+        -:  266:}
+        -:  267:
+        1:  268:void t_detect_patterns(t_time_series *ts)
+        -:  269:{
+        -:  270:    t_pattern_list *new_patterns, *Lpl, *Rpl, *Ipl, *pRpl, *pLpl;
+        -:  271:    t_pattern *Lp, *Rp, *tmp_Lp, *tmp_Rp;
+        -:  272:    double_series *possible_ds, *tmp_possible_ds;
+        -:  273:    unsigned int d, d1, d2,i, j, k, l, m, Nab, tmp_d, tmp_Nab, tmp_d1, tmp_d2;
+        1:  274:    int pattern_detected = 0, is_duplicate = 0, stat, detectedL, detectedR, iter_num;
+        -:  275:    double P_prior, tmp_P_prior;
+        1:  276:    int iter = 0;
+        1:  277:    double alpha = ts->alpha;
+        1:  278:    int Nmin = ts->Nmin;
+        -:  279:    double err;
+        -:  280:    
+        -:  281:    t_pattern **LPat_pts, **RPat_pts;
+        -:  282:    int Npairs;
+        -:  283:    
+        1:  284:    t_output_report_info(ts);	
+        -:  285:    
+        1:  286:    time_calc=0;
+        1:  287:    time_compl=time_inter =time_calc_in=0;
+        -:  288:    
+        1:  289:    stat = 0;
+        -:  290:
+        -:  291:    
+       11:  292:    while ( !stat )
+        -:  293:    {
+        9:  294:        new_patterns = (t_pattern_list*) malloc( sizeof( t_pattern_list ) );
+        9:  295:        new_patterns->next=NULL;
+        -:  296:        
+        9:  297:        t_output_print_iteration( ts,  ++iter );
+        -:  298:        #ifdef MATLAB_ENABLE
+        -:  299:            iteration_number++;
+        -:  300:        #endif
+        9:  301:        stat = 1;
+        -:  302:        
+        9:  303:        t_construct_pair_pat_array( &LPat_pts, &RPat_pts, &Npairs, ts );
+        -:  304:        #pragma omp parallel for default(shared) shared( stat, new_patterns, LPat_pts, RPat_pts) private(iter_num) firstprivate( i,j, k, l, m, Lp, Rp, pattern_detected, tmp_d, tmp_P_prior, tmp_d1, tmp_d2, tmp_possible_ds, tmp_Lp, tmp_Rp, tmp_Nab, P_prior, d1, d2, d, possible_ds, Nab, alpha, Nmin, is_duplicate, Ipl ) 
+    35312:  305:        for ( iter_num = 0; iter_num < Npairs; iter_num++ )
+        -:  306:        {
+    35303:  307:            Lp = LPat_pts[ iter_num ];
+    35303:  308:            Rp = RPat_pts[ iter_num ];
+        -:  309:            
+        -:  310:            //n_candidates = 0;
+        -:  311:            //pat_candidates = ( t_pattern * ) malloc( sizeof( t_pattern ) );
+        -:  312:
+    35303:  313:            fprintf(stderr,  "Scanning %f %d %d ", (float)iter_num / Npairs, iter_num, Npairs );
+    35303:  314:            t_printf_pattern( stdout, Lp, ts);
+    35303:  315:            printf("  and  ");
+    35303:  316:            t_printf_pattern( stdout, Rp, ts);
+    35303:  317:            printf("\n");
+        -:  318:                        
+    35303:  319:            pattern_detected = 0;
+    35303:  320:            switch ( ts->ci_strategy )
+        -:  321:            {
+        -:  322:                case T_SHORTEST_CI:
+    #####:  323:                    tmp_d = ts->Nt;
+    #####:  324:                    break;
+        -:  325:                case T_LONGEST_CI:
+    35303:  326:                    tmp_d = 0;
+    35303:  327:                    break;
+        -:  328:                case T_SIGNIFICANT_CI:
+    #####:  329:                    tmp_P_prior = 100;
+    #####:  330:                    tmp_d = 0;
+        -:  331:            }
+    35303:  332:            tmp_possible_ds = NULL;
+        -:  333:
+   304285:  334:            for ( i = 0; i < Rp->N; i++ )
+        -:  335:            {
+  4514622:  336:                for ( j = 0; j < Rp->N; j++)
+        -:  337:                {
+  4245640:  338:                    if ( i > j )
+  1988329:  339:                        continue;
+ 18544378:  340:                    for ( k = 0; k < Lp->N; k++ )
+        -:  341:                    {
+ 16287067:  342:                        if ( Rp->ind[i].l >= Lp->ind[k].r )
+        -:  343:                        {
+  5269263:  344:                            d1 = Rp->ind[i].l - Lp->ind[k].r;
+  5269263:  345:                            d2 = Rp->ind[j].l - Lp->ind[k].r;
+  5269263:  346:                            if ( ( d1 == 0 ) ) continue;
+  5230392:  347:                            d  = d2 - d1 + 1;
+  5230392:  348:                            Nab = 0;
+  5230392:  349:                            possible_ds = ( double_series* ) malloc(  ( (Lp->N < Rp->N )? Lp->N : Rp->N ) * sizeof( double_series ) );
+        -:  350:                            
+ 84274134:  351:                            for ( l = 0; l < Lp->N; l++ )
+        -:  352:                            {
+2152610846:  353:                                for ( m = 0; m < Rp->N; m++ )
+        -:  354:                                {
+2086536962:  355:                                    if ( Nab && ( Lp->ind[l].l <= possible_ds[ Nab - 1].r) ) continue; 
+757061202:  356:                                    if ( ( Rp->ind[m].l >= Lp->ind[l].r + d1 ) && ( Rp->ind[m].l <= Lp->ind[l].r + d2 ) )
+        -:  357:                                    {
+ 12969858:  358:                                        possible_ds[Nab].l = Lp->ind[l].l;
+ 12969858:  359:                                        possible_ds[Nab].r = Rp->ind[m].r;
+ 12969858:  360:                                        Nab++;
+ 12969858:  361:                                        break;
+        -:  362:                                    }
+        -:  363:                                 }
+        -:  364:                             }
+        -:  365:                             //printf("t %d %d %d\n", d1,d2,d);
+  5230392:  366:                             P_prior = t_calc_prior_probability (ts->Nt, Lp->N, Rp->N, Nab, d,       T_PCALC_T_FULL_MEAN);
+        -:  367:                                // if (d<12)
+        -:  368:                                //printf("P %d %d %d %d <%f>\n", d1,d2,d, Nab, P_prior);
+        -:  369:                                //printf("\tLL i=%d j=%d k=%d [%d %d] (%d %d) <%f> {%d}\n", i,j, k, Rp->ind[i].l,Rp->ind[j].l, d1,d2, P_prior, Nab);
+  5230392:  370:                             t_choose_significance_levels(ts, &alpha, &Nmin, Lp->nevents + Rp->nevents);
+  5230392:  371:                             if ( (P_prior <= alpha)  && ( Nab > Nmin ) )
+        -:  372:                             {
+      497:  373:                                pattern_detected = 1;
+     1885:  374:                                if ( ( ( P_prior < tmp_P_prior) && ( ts->ci_strategy == T_SIGNIFICANT_CI ) ) ||
+      614:  375:                                     ( ( d2 - d1 + 1 < tmp_d )  && ( ts->ci_strategy == T_SHORTEST_CI    ) ) ||
+      774:  376:                                     ( ( d2 - d1 + 1 > tmp_d )  && ( ts->ci_strategy == T_LONGEST_CI     ) )  )
+        -:  377:                                {
+        -:  378:                                    //if ( (ts->ci_strategy == T_SIGNIFICANT_CI) || ! ( (d == tmp_d) && (tmp_Nab > Nab ) ) )
+        -:  379:                                    //{
+      277:  380:                                        if ( tmp_possible_ds )
+        -:  381:                                        {
+       67:  382:                                            free( tmp_possible_ds );
+       67:  383:                                            tmp_possible_ds = NULL;
+        -:  384:                                        }
+      277:  385:                                        tmp_d = d;
+      277:  386:                                        tmp_d1 = d1;
+      277:  387:                                        tmp_d2 = d2;
+      277:  388:                                        tmp_Lp = Lp;
+      277:  389:                                        tmp_Rp = Rp;
+      277:  390:                                        tmp_possible_ds = ( double_series* ) malloc( Nab * sizeof( double_series ) );
+      277:  391:                                        memcpy( tmp_possible_ds, possible_ds, Nab * sizeof( double_series ) );
+      277:  392:                                        tmp_Nab = Nab;
+      277:  393:                                        tmp_P_prior = P_prior;
+        -:  394:                                     //}
+        -:  395:                                 }                               
+        -:  396:                               }
+  5230392:  397:                              free( possible_ds );
+        -:  398:                          }
+        -:  399:                      }
+        -:  400:                  }
+        -:  401:              }
+        -:  402:        
+    35303:  403:              if ( pattern_detected )
+        -:  404:              {
+        -:  405:                /* check for duplicate */
+      210:  406:                is_duplicate = 0;
+    16533:  407:                for (Ipl = ts->patterns->next; Ipl != NULL; Ipl = Ipl->next)
+        -:  408:                {//TODO: DUPLICATES (ACB) is not (AB)... check for event amount
+    16323:  409:                    if ( t_is_equal_ds(Ipl->pat.ind, Ipl->pat.N, possible_ds, Nab) && t_is_equal_events( &Ipl->pat, tmp_Lp, tmp_Rp ) )
+        -:  410:                    {
+    #####:  411:                        is_duplicate = 1;
+    #####:  412:                        break;
+        -:  413:                    }
+        -:  414:                }
+      210:  415:                if (!is_duplicate)
+        -:  416:                {
+        -:  417:                   #pragma omp critical
+        -:  418:                    {
+      210:  419:                        t_construct_pattern(new_patterns, tmp_Lp, tmp_Rp, tmp_possible_ds, tmp_Nab, tmp_P_prior, tmp_d1, tmp_d2);
+      210:  420:                        stat = 0;
+        -:  421:                    }
+        -:  422:                }
+      210:  423:                free( tmp_possible_ds );
+        -:  424:                
+        -:  425:              }
+        -:  426:        }
+        -:  427:        
+        9:  428:        Npairs = 0;
+        9:  429:        free( LPat_pts );
+        9:  430:        free( RPat_pts );
+        -:  431:        
+        9:  432:        start=clock();
+        -:  433:        /* Mark checked patterns */ 
+     1020:  434:        for ( Ipl = ts->patterns->next; Ipl != NULL; Ipl = Ipl->next )	
+     1011:  435:            Ipl->pat.new_one = 0;
+        -:  436:        
+        9:  437:        t_output_print_found_patterns(ts, new_patterns->next);
+        -:  438:        
+        -:  439:        /* Merge old and new pattern lists */
+        9:  440:        conc_patterns(ts->patterns, new_patterns);
+        -:  441:        
+        -:  442:        /* Completness check */
+     1238:  443:        for ( pLpl = ts->patterns, Lpl = ts->patterns->next; Lpl != NULL;)
+        -:  444:        {
+     1220:  445:            detectedL = 0;
+   172054:  446:            for ( pRpl = ts->patterns, Rpl = ts->patterns->next; Rpl != NULL; )
+        -:  447:            {
+   169686:  448:                detectedR = 0;
+   169686:  449:                Rp = &Rpl->pat;
+   169686:  450:                Lp = &Lpl->pat;
+   169686:  451:                if ( (Rp->N == Lp->N) && ( Rp != Lp ) )
+        -:  452:                {
+    31490:  453:                    if ( t_is_subpattern( Lp, Rp ) && t_is_intersec( Lp->ind, Rp->ind, Rp->N ) &&
+       72:  454:                        ( Lp->nevents != 1 ) ) /* Don't delete pseudo patterns */
+        -:  455:                    {
+        -:  456:                        /* delete_pattern  Lp */
+       72:  457:                        t_output_print_deleted(ts, Lpl, Rpl);
+        -:  458:                        
+       72:  459:                        pLpl->next = Lpl->next;
+       72:  460:                        free( Lp->events );
+       72:  461:                        free( Lp->CI );
+       72:  462:                        free( Lpl );
+       72:  463:                        Lpl = pLpl->next;
+       72:  464:                        stat = 0;
+       72:  465:                        detectedL = 1;
+       72:  466:                        break;
+        -:  467:                    }
+    31347:  468:                    else if ( t_is_subpattern( Rp, Lp )  && t_is_intersec( Rp->ind, Lp->ind, Rp->N ) &&
+        1:  469:                        ( Rp->nevents != 1 ) ) /* Don't delete pseudo patterns */
+        -:  470:                    {
+        -:  471:                        /* delete_pattern  Rp */
+        1:  472:                        t_output_print_deleted(ts, Rpl, Lpl);
+        -:  473:                        
+        1:  474:                        pRpl->next = Rpl->next;
+        1:  475:                        free( Rp->events );
+        1:  476:                        free( Rp->CI );
+        1:  477:                        free( Rpl );
+        1:  478:                        Rpl = pRpl->next;
+        1:  479:                        stat = 0;
+        1:  480:                        detectedR = 1;
+        -:  481:                    }
+        -:  482:                }
+   169614:  483:                if (!detectedR) 
+        -:  484:                {
+   169613:  485:                    Rpl = Rpl->next;
+   169613:  486:                    pRpl = pRpl->next;
+        -:  487:                }
+        -:  488:            }
+     1220:  489:            if (!detectedL)
+        -:  490:            {
+     1148:  491:                Lpl = Lpl->next;
+     1148:  492:                pLpl = pLpl->next;
+        -:  493:            }
+        -:  494:        }
+        9:  495:        stop=clock();
+        9:  496:        time_compl+=(stop-start)/ CLOCKS_PER_SEC;
+        9:  497:        t_output_best_patterns_on_step(ts);
+        -:  498:        
+        -:  499:    }
+        1:  500:    printf("\nC=%f(%f) %f %f", time_calc, time_calc_in, time_inter, time_compl);
+        1:  501:}

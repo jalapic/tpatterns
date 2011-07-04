@@ -1,0 +1,22 @@
+function T_PLOT_TS( events, Nt )
+%UNTITLED Summary of this function goes here
+%   Detailed explanation goes here
+    cla
+    hold on
+    axis([0 Nt 0 size(sym, 1)+2])
+    grid off
+    zoom off 
+     
+    names = {events(:).event_name };
+    
+    set(gca,'YTick',1:size(sym, 1))
+    %set(gca,'YTickLabel',{ sym } );
+    
+    
+    
+    for i = 1 : size(events, 2)
+        plot( events(i).indexes, repmat( i, 1, size( events(i).indexes, 2 ) ), 's', 'Color', [0.2 0.2 0.2], 'MarkerSize', 2);
+    end
+
+end
+

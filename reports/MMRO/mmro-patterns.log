@@ -1,0 +1,601 @@
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2011.4.8)  11 JUN 2011 03:14
+entering extended mode
+ %&-line parsing enabled.
+**mmro-patterns.tex
+(./mmro-patterns.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, bulgarian, ukrainian, russian, loaded.
+(/usr/share/texmf-texlive/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texmf-texlive/tex/latex/base/size10.clo
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (./mmro15.sty
+
+LaTeX Warning: You have requested package `mmro15',
+               but the package provides `mmro14'.
+
+Package: mmro14 2009/07/07 Russian Conference on Mathematical Methods of Patter
+n Recognition (MMRO)
+(/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+
+(/usr/share/texmf-texlive/tex/latex/cyrillic/cp1251.def
+File: cp1251.def 1999/11/16 v1.0d Input encoding file
+))
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2009/06/22 v3.00
+
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\@emptytoks=\toks16
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+))
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf-texlive/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks17
+\ex@=\dimen103
+))
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen104
+)
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count87
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count88
+\leftroot@=\count89
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count90
+\DOTSCASE@=\count91
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count92
+\c@MaxMatrixCols=\count93
+\dotsspace@=\muskip10
+\c@parentequation=\count94
+\dspbrk@lvl=\count95
+\tag@help=\toks18
+\row@=\count96
+\column@=\count97
+\maxfields@=\count98
+\andhelp@=\toks19
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks20
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks21
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+(/usr/share/texmf-texlive/tex/latex/jknapltx/mathrsfs.sty
+Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
+\symrsfs=\mathgroup6
+)
+(/usr/share/texmf-texlive/tex/latex/amsfonts/euscript.sty
+Package: euscript 2009/06/22 v3.00 Euler Script fonts
+LaTeX Font Info:    Overwriting math alphabet `\EuScript' in version `bold'
+(Font)                  U/eus/m/n --> U/eus/b/n on input line 33.
+)
+(/usr/share/texmf-texlive/tex/generic/babel/babel.sty
+Package: babel 2008/07/06 v3.8l The Babel package
+
+(/usr/share/texmf-texlive/tex/generic/babel/english.ldf
+Language: english 2005/03/30 v3.3o English support from the babel system
+
+(/usr/share/texmf-texlive/tex/generic/babel/babel.def
+File: babel.def 2008/07/06 v3.8l Babel common definitions
+\babel@savecnt=\count99
+\U@D=\dimen112
+)
+\l@british = a dialect from \language\l@english 
+\l@UKenglish = a dialect from \language\l@english 
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+)
+(/usr/share/texmf-texlive/tex/generic/babel/russianb.ldf
+Language: russianb 2008/03/21 v1.1r Russian support from the babel system
+
+(/usr/share/texmf-texlive/tex/latex/cyrillic/t2aenc.def
+File: t2aenc.def 2005/09/27 v1.0i Cyrillic encoding definition file
+)
+Package babel Info: Making " an active character on input line 199.
+))
+(/usr/share/texmf-texlive/tex/latex/tools/array.sty
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen113
+\extrarowheight=\dimen114
+\NC@list=\toks22
+\extratabsurround=\skip46
+\backup@length=\skip47
+)
+(/usr/share/texmf-texlive/tex/latex/tools/theorem.sty
+Package: theorem 1995/11/23 v2.2c Theorem extension package (FMi)
+\theorem@style=\toks23
+\theorem@bodyfont=\toks24
+\theorempreskipamount=\skip48
+\theorempostskipamount=\skip49
+
+(/usr/share/texmf-texlive/tex/latex/tools/thp.sty
+File: thp.sty 1995/11/23 v2.2c Theorem extension package (FMi)
+))
+(/usr/share/texmf-texlive/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+(/usr/share/texmf-texlive/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count100
+\float@exts=\toks25
+\float@box=\box28
+\@float@everytoks=\toks26
+\@floatcapt=\box29
+)
+(/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks27
+\c@algorithm=\count101
+)
+(/usr/share/texmf-texlive/tex/latex/algorithms/algorithmic.sty
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks28
+)
+\c@ALC@unique=\count102
+\c@ALC@line=\count103
+\c@ALC@rem=\count104
+\c@ALC@depth=\count105
+\ALC@tlm=\skip50
+\algorithmicindent=\skip51
+)
+(/usr/share/texmf-texlive/tex/generic/xypic/xy.sty
+(/usr/share/texmf-texlive/tex/generic/xypic/xy.tex Bootstrap'ing: catcodes,
+docmode, (/usr/share/texmf-texlive/tex/generic/xypic/xyrecat.tex)
+(/usr/share/texmf-texlive/tex/generic/xypic/xyidioms.tex)
+
+ Xy-pic version 3.7 <1999/02/16>
+ Copyright (c) 1991-1998 by Kristoffer H. Rose <krisrose@ens-lyon.fr>
+ Xy-pic is free software: see the User's Guide for details.
+
+Loading kernel: messages; fonts; allocations: state,
+\X@c=\dimen115
+\Y@c=\dimen116
+\U@c=\dimen117
+\D@c=\dimen118
+\L@c=\dimen119
+\R@c=\dimen120
+\Edge@c=\toks29
+\X@p=\dimen121
+\Y@p=\dimen122
+\U@p=\dimen123
+\D@p=\dimen124
+\L@p=\dimen125
+\R@p=\dimen126
+\Edge@p=\toks30
+\X@origin=\dimen127
+\Y@origin=\dimen128
+\X@xbase=\dimen129
+\Y@xbase=\dimen130
+\X@ybase=\dimen131
+\Y@ybase=\dimen132
+\X@min=\dimen133
+\Y@min=\dimen134
+\X@max=\dimen135
+\Y@max=\dimen136
+\lastobjectbox@=\box30
+\zerodotbox@=\box31
+\almostz@=\dimen137
+ direction,
+\d@X=\dimen138
+\d@Y=\dimen139
+\K@=\count106
+\KK@=\count107
+\Direction=\count108
+\K@dXdY=\dimen140
+\K@dYdX=\dimen141
+\xyread@=\read1
+\xywrite@=\write3
+\csp@=\count109
+\quotPTK@=\dimen142
+
+utility macros; pictures: \xy, positions,
+\swaptoks@@=\toks31
+\connectobjectbox@@=\box32
+ objects,
+\styletoks@=\toks32
+ decorations;
+kernel objects: directionals, circles, text; options; algorithms: directions,
+edges, connections;  Xy-pic loaded)
+Package: xy 1999/02/16 Xy-pic version 3.7
+
+(/usr/share/texmf-texlive/tex/generic/xypic/xyall.tex
+ Xy-pic option: All features v.3.3
+(/usr/share/texmf-texlive/tex/generic/xypic/xycurve.tex
+ Xy-pic option: Curve and Spline extension v.3.7 curve,
+\crv@cnt@=\count110
+\crvpts@=\toks33
+\splinebox@=\box33
+\splineval@=\dimen143
+\splinedepth@=\dimen144
+\splinetol@=\dimen145
+\splinelength@=\dimen146
+ circles,
+\L@=\dimen147
+ loaded)
+(/usr/share/texmf-texlive/tex/generic/xypic/xyframe.tex
+ Xy-pic option: Frame and Bracket extension v.3.7 loaded)
+(/usr/share/texmf-texlive/tex/generic/xypic/xycmtip.tex
+ Xy-pic option: Computer Modern tip extension v.3.3
+(/usr/share/texmf-texlive/tex/generic/xypic/xytips.tex
+ Xy-pic option: More Tips extension v.3.3 loaded) loaded)
+(/usr/share/texmf-texlive/tex/generic/xypic/xyline.tex
+ Xy-pic option: Line styles extension v.3.6
+\xylinethick@=\dimen148
+ loaded)
+(/usr/share/texmf-texlive/tex/generic/xypic/xyrotate.tex
+ Xy-pic option: Rotate and Scale extension v.3.3 loaded)
+(/usr/share/texmf-texlive/tex/generic/xypic/xycolor.tex
+ Xy-pic option: Colour extension v.3.3 loaded)
+(/usr/share/texmf-texlive/tex/generic/xypic/xymatrix.tex
+ Xy-pic option: Matrix feature v.3.4
+\Row=\count111
+\Col=\count112
+\queue@=\toks34
+\queue@@=\toks35
+\qcount@=\count113
+\qcount@@=\count114
+\matrixsize@=\count115
+ loaded)
+(/usr/share/texmf-texlive/tex/generic/xypic/xyarrow.tex
+ Xy-pic option: Arrow and Path feature v.3.5 path, \ar, loaded)
+(/usr/share/texmf-texlive/tex/generic/xypic/xygraph.tex
+ Xy-pic option: Graph feature v.3.7 loaded) loaded))
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/etc/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: dvips.def on input line 91.
+
+(/usr/share/texmf-texlive/tex/latex/graphics/dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+\Gin@req@height=\dimen149
+\Gin@req@width=\dimen150
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+(/etc/texmf/tex/latex/config/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: dvips.def on input line 130.
+
+(/usr/share/texmf-texlive/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/url.sty
+\Urlmuskip=\muskip11
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+(/usr/share/texmf-texlive/tex/latex/base/makeidx.sty
+Package: makeidx 2000/03/29 v1.0m Standard LaTeX package
+)
+(/usr/share/texmf-texlive/tex/latex/pb-diagram/pb-diagram.sty
+\dgARROWLENGTH=\skip52
+\dgTEXTARROWLENGTH=\skip53
+\dgHORIZPAD=\skip54
+\dgVERTPAD=\skip55
+\dgLABELOFFSET=\skip56
+\dgARROWPARTS=\count116
+\dgDOTSPACING=\skip57
+\dgDOTSIZE=\skip58
+\dgMAXSQUARE=\count117
+\dgMINDBLSQ=\count118
+\dgCOLUMNWIDTH=\skip59
+\dg@HORIZ=\count119
+\dg@VERT=\count120
+\dg@XLPAD=\count121
+\dg@YBPAD=\count122
+\dg@XRPAD=\count123
+\dg@YTPAD=\count124
+\dg@X=\count125
+\dg@Y=\count126
+\dg@XGRID=\count127
+\dg@YGRID=\count128
+\dg@SIZE=\count129
+\dg@USERSIZE=\count130
+\dg@DX=\count131
+\dg@DY=\count132
+\dg@XLBL=\count133
+\dg@YLBL=\count134
+\dg@XOFFSET=\count135
+\dg@YOFFSET=\count136
+\dg@LBLOFF=\count137
+\dg@XLBLOFF=\count138
+\dg@YLBLOFF=\count139
+\dg@LBLPOS=\count140
+\dg@XTEMP=\count141
+\dg@YTEMP=\count142
+\dg@ZTEMP=\count143
+\dg@XNODE=\count144
+\dg@YNODE=\count145
+\dg@XEND=\count146
+\dg@YEND=\count147
+\dg@WEND=\count148
+\dg@HEND=\count149
+\dg@COUNT=\count150
+\dg@NODEBOX=\box34
+\dg@LABONEBOX=\box35
+\dg@LABTWOBOX=\box36
+)
+(/usr/share/texmf-texlive/tex/latex/preprint/balance.sty
+Package: balance 1999/02/23 4.3 (PWD)
+\oldvsize=\dimen151
+)
+(/usr/share/texmf-texlive/tex/latex/multirow/multirow.sty
+\bigstrutjot=\dimen152
+)
+\vskipBeforeTitle=\skip60
+\vskipAfterTitle=\skip61
+\c@PaperNo=\count151
+\@papers@table=\write4
+\@reviewers@bat=\write5
+\@authors@bat=\write6
+\@corrauthors@bat=\write7
+\@make@bat=\write8
+\c@mmroTotal=\count152
+\c@mmroCorrected=\count153
+\c@mmroReviewed=\count154
+\c@mmroAccepted=\count155
+\c@mmroMayBeCompleted=\count156
+\c@mmroMustBeCompleted=\count157
+\c@mmroRejected=\count158
+\c@mmroReviewerNote=\count159
+\c@mmroTotalReviewedPapers=\count160
+\c@mmroTotalReviewerNotes=\count161
+\c@mmroFinalReviewerNotes=\count162
+\c@@authors@no=\count163
+\c@TodoCount=\count164
+\c@PictureNo=\count165
+\c@Theorem=\count166
+\c@Corollary=\count167
+\c@Def=\count168
+\c@Axiom=\count169
+\c@Hypothesis=\count170
+\c@Assumption=\count171
+\c@Problem=\count172
+\c@Example=\count173
+\c@Fact=\count174
+\c@Remark=\count175
+\c@Notice=\count176
+\c@Rule=\count177
+\c@Condition=\count178
+)
+(./mmro-patterns.aux
+LaTeX Font Info:    Try loading font information for T2A+cmr on input line 6.
+ (/usr/share/texmf-texlive/tex/latex/cyrillic/t2acmr.fd
+File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
+))
+\openout1 = `mmro-patterns.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 5.
+LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Try loading font information for T2A+cmss on input line 40.
+
+
+(/usr/share/texmf-texlive/tex/latex/cyrillic/t2acmss.fd
+File: t2acmss.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 40.
+
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 40.
+
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 40.
+
+(/usr/share/texmf-texlive/tex/latex/jknapltx/ursfs.fd
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+)
+LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 40.
+
+
+(/usr/share/texmf-texlive/tex/latex/cyrillic/t2acmtt.fd
+File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
+)
+Underfull \hbox (badness 10000) in paragraph at lines 40--40
+$[]$[]\T2A/cmr/m/n/8 Работа вы-пол-не-на при фи-нан-со-вой под-держ-ке
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 40--40
+\T2A/cmr/m/n/8 РФФИ(проект ќ08-01-00405), гран-та Пре-зи-ден-та
+ []
+
+
+Underfull \hbox (badness 2894) in paragraph at lines 42--47
+[]\T2A/cmr/m/n/10 Задача по-ис-ка за-ко-но-мер-но-стей(стереотипов,
+ []
+
+
+Underfull \vbox (badness 1052) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+
+ []
+
+[1
+
+
+]
+File: il1.eps Graphic file (type eps)
+ <il1.eps>
+Underfull \hbox (badness 10000) in paragraph at lines 157--157
+[]\T2A/cmr/bx/n/9 Рис.1. \T2A/cmr/m/n/9 Вхож-де-ние нечет-ко-го пат-тер-на $\OT
+1/cmr/bx/n/9 P \OT1/cmr/m/n/9 =
+ []
+
+
+Underfull \hbox (badness 3646) in paragraph at lines 157--157
+\T2A/cmr/m/n/9 ке-ры-круж-ки со-от-вет-ству-ют ожи-да-е-мым по-зи-ци-ям
+ []
+
+
+Underfull \vbox (badness 4429) has occurred while \output is active []
+
+
+Underfull \hbox (badness 2181) in paragraph at lines 210--212
+\T2A/cmr/m/n/10 По су-ти, прав-до-по-до-бие по-ка-зы-ва-ет на-сколь-ко
+ []
+
+
+Overfull \hbox (10.42772pt too wide) in paragraph at lines 221--224
+[]\T2A/cmr/m/sl/10 Математическое ожи-да-ние функ-
+ []
+
+
+Overfull \hbox (0.81798pt too wide) in paragraph at lines 259--267
+\T2A/cmr/m/n/10 Пусть $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 []\OMS/cmsy/m/n/10 g
+[]$ \T2A/cmr/m/n/10 и $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 ^^L[]\OMS/cmsy/m/n/10
+ g[]$ \T2A/cmr/m/n/10 ^^V зна-че-ния прав-
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+
+ []
+
+[2]
+Underfull \hbox (badness 10000) detected at line 289
+ []$[]  \OML/cmm/m/it/10 p[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 
+) == []$ []  
+ []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+
+ []
+
+[3]
+Underfull \hbox (badness 2435) in paragraph at lines 434--435
+[]\T2A/cmr/m/n/10 Шумовая груп-па, с па-ра-мет-ра-ми ча-сто-
+ []
+
+
+Underfull \hbox (badness 4699) in paragraph at lines 434--435
+\T2A/cmr/m/n/10 ты и про-дол-жи-тель-но-сти ак-тов пер-вой
+ []
+
+
+Underfull \hbox (badness 2435) in paragraph at lines 435--436
+[]\T2A/cmr/m/n/10 Шумовая груп-па, с па-ра-мет-ра-ми ча-сто-
+ []
+
+
+Underfull \hbox (badness 4699) in paragraph at lines 435--436
+\T2A/cmr/m/n/10 ты и про-дол-жи-тель-но-сти ак-тов вто-рой
+ []
+
+File: bad_data.eps Graphic file (type eps)
+<bad_data.eps>
+Underfull \hbox (badness 10000) in paragraph at lines 510--512
+[]\T2A/cmr/m/n/9 R. Stoop, B. Arthur. Periodic orbit analysis
+ []
+
+
+Underfull \hbox (badness 3460) in paragraph at lines 510--512
+\T2A/cmr/m/n/9 demonstrates genetic constraints, variability, and
+ []
+
+
+Underfull \hbox (badness 2922) in paragraph at lines 510--512
+\T2A/cmr/m/n/9 switching in Drosophila courtship behavior.  ---
+ []
+
+
+Package balance Warning: You have called \balance in second column
+(balance)                Columns might not be balanced.
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+
+ []
+
+[4] (./mmro-patterns.aux) ) 
+Here is how much of TeX's memory you used:
+ 5727 strings out of 494819
+ 69077 string characters out of 1178690
+ 177948 words of memory out of 3000000
+ 8739 multiletter control sequences out of 15000+50000
+ 32710 words of font info for 86 fonts, out of 3000000 for 9000
+ 215 hyphenation exceptions out of 8191
+ 34i,16n,26p,3531b,360s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+Output written on mmro-patterns.dvi (4 pages, 41948 bytes).

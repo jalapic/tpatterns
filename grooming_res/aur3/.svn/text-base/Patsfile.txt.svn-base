@@ -1,0 +1,22 @@
+Format (Spearators: one TAB after terminals then space); terminal_string TAB id n length levels duration %duration	
+( abdomen_licking  nose_washing )	16 2 2 1 143 1 609 657 683 776
+( cheeks_sacks_washing  forelimb_licking )	17 9 2 1 666 5 804 879 6789 6849 7368 7568 7629 7684 10271 10287 10505 10577 11274 11290 11568 11631 11976 12076
+( fast_nose_washing  head_and_ears_washing )	19 2 2 1 46 0 3952 3974 10723 10745
+( forelimb_biting  forelimb_licking )	20 6 2 1 285 2 5567 5591 5626 5660 9794 9825 9832 9846 10179 10211 10433 10577
+( forelimb_licking  forelimb_biting )	21 4 2 1 156 1 5591 5626 7684 7725 9725 9794 9825 9832
+( hand_licking  forelimb_licking )	22 4 2 1 464 4 734 879 3844 4012 9587 9725 11445 11454
+( non_grooming  abdomen_licking )	26 3 2 1 67 1 594 609 977 1004 3376 3398
+( non_grooming  vibrissae_washing )	28 2 2 1 105 1 3307 3357 11502 11555
+( nose_eyes_washing  fast_nose_washing )	29 2 2 1 203 2 315 454 5444 5506
+( nose_eyes_washing  nose_washing )	30 3 2 1 243 2 315 442 602 657 718 776
+( nose_washing  abdomen_licking )	31 3 2 1 424 3 442 609 657 683 776 1004
+( vibrissae_washing  abdomen_licking )	33 2 2 1 87 1 960 1004 3357 3398
+( vibrissae_washing  non_grooming )	34 3 2 1 63 1 960 977 3283 3307 3357 3376
+( non_grooming ( cheeks_sacks_washing  forelimb_licking ))	37 2 3 2 134 1 10264 10271 10287 11967 11976 12076
+( non_grooming ( nose_washing  nose_eyes_washing ))	38 2 3 2 301 2 335 442 510 594 657 718
+( nose_eyes_washing ( non_grooming  abdomen_licking ))	39 2 3 2 387 3 510 594 609 718 977 1004
+(( cheeks_sacks_washing  forelimb_licking )( head_and_ears_washing  flank_licking ))	43 2 4 2 462 4 7629 7684 7736 7834 10505 10577 10745 10760
+(( non_grooming  abdomen_licking )( hand_licking  head_and_ears_washing ))	45 2 4 2 790 6 594 609 734 784 3376 3398 3844 3974
+(( nose_eyes_washing  nose_washing )( non_grooming  abdomen_licking ))	46 2 4 2 582 5 315 442 594 609 718 776 977 1004
+((( fast_nose_washing  flank_licking )( abdomen_licking ( hand_licking  forelimb_licking ))) vibrissae_washing )	48 2 6 4 1340 11 454 550 683 734 879 960 10723 10760 11402 11445 11454 11555
+(( fast_nose_washing  flank_licking )(( abdomen_licking  hand_licking )( cheeks_sacks_washing  forelimb_licking )))	50 2 6 3 1335 11 454 550 683 734 804 879 10723 10760 11402 11445 11568 11631

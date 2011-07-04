@@ -1,0 +1,20 @@
+Format (Spearators: one TAB after terminals then space); terminal_string TAB id n length levels duration %duration
+( body_sniffing  non_grooming )	20 3 2 1 185 1 46 94 267 342 486 545
+(( cheeks_sacks_washing  forelimb_licking ) back_licking )	21 2 3 2 255 2 13632 13689 13771 13904 13974 14018
+( cheeks_sacks_washing  forelimb_licking )	22 14 2 1 693 5 4162 4220 4347 4374 4868 4893 5361 5447 5620 5644 8544 8558 8990 9024 9480 9541 9825 9842 12929 12957 12985 12999 13393 13557 13632 13689 13904 13974
+( fast_nose_washing  flank_licking )	23 4 2 1 201 1 745 796 3750 3829 11827 11875 13381 13400
+( fast_nose_washing  head_and_ears_washing )	24 4 2 1 118 1 745 769 3750 3783 6812 6832 11827 11864
+( forelimb_biting  forelimb_licking )	25 4 2 1 162 1 9220 9240 9873 9917 9963 9987 10003 10073
+( forelimb_licking  forelimb_biting )	26 4 2 1 123 1 9194 9220 9842 9873 9917 9963 9987 10003
+( hand_licking  head_and_ears_washing )	27 6 2 1 597 4 639 769 2941 3059 5305 5342 6760 6832 9178 9297 9310 9425
+( head_and_ears_washing  flank_licking )	28 3 2 1 87 1 769 796 3783 3829 11864 11875
+( non_grooming  hindlimb_licking )	29 2 2 1 87 1 7897 7939 11190 11233
+( nose_eyes_washing  forelimb_licking )	31 7 2 1 324 2 958 1013 1901 1926 5136 5151 5285 5447 8520 8558 8747 8754 13674 13689
+( abdomen_licking ( fast_nose_washing  flank_licking ))	32 3 3 2 464 3 3611 3750 3829 11705 11827 11875 13327 13381 13400
+( hand_licking ( fast_nose_washing  head_and_ears_washing ))	33 2 3 2 204 1 639 745 769 6760 6812 6832
+( non_grooming ( nose_eyes_washing  forelimb_licking ))	34 3 3 2 269 2 1876 1901 1926 5272 5285 5447 8713 8747 8754
+(( body_sniffing  non_grooming ) hand_licking )	35 2 3 2 259 2 46 94 150 486 545 639
+(( fast_nose_washing  head_and_ears_washing ) abdomen_licking )	36 2 3 2 146 1 6812 6832 6850 11827 11864 11933
+(( non_grooming  nose_eyes_washing ) forelimb_licking )	40 2 3 2 93 1 1876 1901 1926 8713 8747 8754
+( fast_nose_washing (( head_and_ears_washing  flank_licking ) abdomen_licking ))	41 2 4 3 250 2 745 769 796 887 11827 11864 11875 11933
+(( non_grooming  nose_eyes_washing )(( hand_licking  head_and_ears_washing )( cheeks_sacks_washing  forelimb_licking )))	43 2 6 3 1005 7 5272 5285 5305 5342 5361 5447 8713 8747 9310 9425 9480 9541

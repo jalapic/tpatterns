@@ -1,0 +1,105 @@
+#ifndef T_TIME_SEQUENCE_H
+#define T_TIME_SEQUENCE_H
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "t_helper.h"
+
+#include <math.h>
+
+#define PATTERN_ALLOCATE_BLOCK_SIZE 10
+#define MAX_PAT_LEVELS 20
+
+
+typedef struct tt_levels
+{
+	int len;
+	double alpha;
+	int Nmin;
+} t_levels;
+
+
+typedef struct tt_double_series
+{
+	unsigned int l,r;
+} double_series;
+
+typedef struct tt_pattern
+{
+	double_series *ind; 	/* All left&right border indexes of current pattern */
+	int N;					/* Number of occurences of pattern */
+	
+	double significance;	/* Significance level */
+	int d1,d2;				/* */
+	int *events;			/* Codes of all events that occur in pattern, due to order. (Not unique events!)*/
+	int nevents;			/* Number of events (not unique) */
+	double_series *CI;      /* Critical intervals, that connects patterns size of CI i nevents-1 */
+	int *tree;
+    int tree_len;
+	int new_one;    		/* Is that pattern was added on previous step */
+}t_pattern;
+
+/*Goood list*/
+struct tt_pattern_lst;
+typedef struct tt_pattern_lst t_pattern_lst;
+struct tt_pattern_lst
+{
+        t_pattern      *pat;
+        t_pattern_lst  *next;
+};
+/*End of good list*/
+
+struct tt_pattern_list;
+typedef struct tt_pattern_list t_pattern_list;
+
+/*list with head element*/
+struct tt_pattern_list
+{
+	t_pattern pat;
+	t_pattern_list *next;
+};
+
+typedef struct tt_time_sequence
+{
+    unsigned int Nt;                		/* Length of observation */
+    unsigned int num_event_types;   		/* Number of unique events */
+    unsigned int allocated_num_event_types;	/* */
+    unsigned int *N;                		/* Number of occurrences of correspondend event type */
+    unsigned int *allocated_N;
+    char **event_sign;           			/* event signature strings */
+    unsigned int **event_i;  				/* indexes of event occurrences */
+
+    double alpha; 							/* significance level */
+    unsigned int Nmin; 						/* Min occurrences to be T-Pattern */
+	
+    t_pattern_list *patterns;     			/* List */
+    unsigned int num_patterns;
+    char fname[255];
+    FILE* output;
+    enum { T_LONGEST_CI = 1, T_SHORTEST_CI, T_SIGNIFICANT_CI } ci_strategy;
+    
+    t_levels *levels;
+    int nlevels;
+    
+    int allow_same_events_in_pattern;
+    
+}t_time_series;
+
+
+int t_add_event_type(t_time_series* ts, char* event_name);
+int t_index_of(t_time_series* ts, char* event_name);
+int t_add_event_ent(t_time_series* ts, char* event_name, unsigned int index);
+int t_read_structs_from_file(t_time_series* ts, char* fname);
+void t_choose_significance_levels(t_time_series *ts, double* alpha, int* Nmin, int n);
+
+void t_delete_pattern( t_pattern * pat );
+
+t_pattern_lst*  t_new_blank_lst_node( void );
+t_pattern_lst*  t_new_alloc_lst_node( void );
+void            t_delete_all_lst( t_pattern_lst* pl );
+void            t_delete_node( t_pattern_lst* node );
+void            t_push_lst( t_pattern_lst* pl, const t_pattern_lst* node );
+
+void t_pattern_deep_copy( t_pattern *dst, const t_pattern *src );
+
+#endif /* T_TIME_SEQUENCE_H */
