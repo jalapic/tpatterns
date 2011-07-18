@@ -44,8 +44,7 @@ function [new_pats, patterns_merged] = T_ADD_PATTERN(events, ps, pL, ...
 %
 % new_pats [ array struct ] Pattern to add(that we found). See README,
 %PATTERN STRUCTURE
-% patterns_merged [ int ]   Amount of found pattern.
-%
+% patterns_merg
 % Revisions:
 % Author: 18 Jul 2011 Valeriy Vishnevskiy
 % Superviser: Dmitry Vetrov

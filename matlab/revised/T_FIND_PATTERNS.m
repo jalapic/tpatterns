@@ -36,7 +36,7 @@ function pattern_pool = T_FIND_PATTERNS( events, ep, Nt, ...
 % use_cuda  [ bool ] Try to use cuda. Will return warning if something is 
 %wrong
 % conf      [ struct ] configuration structure with algorithm's parameters,
-% etc. See README, CONFIG STRUCTURE.
+%etc. See README, CONFIG STRUCTURE.
 %
 % pattern_pool [ struct ] All the patterns that we found. See README, 
 %PATTERN STRUCTURE.
@@ -111,8 +111,8 @@ for lp_i = 1 : numel( pattern_pool )
         if nnz( ismember( pL.Events, pR.Events ) ) == numel( pL.Events )
             for i = 1:numel(pR.Events)
                 R = pR.LhSHIFTED(i,:);
-                if (pL.Lh*R') / ( sqrt( pL.Lh*pL.Lh' ) * sqrt( R*R' ) ) ...
-                        >= conf.cor
+                if (pL.Lh*R') / ( sqrt( pL.Lh*pL.Lh' ) * ...
+                        sqrt( R*R' ) )  >= conf.cor
                     to_del = [ to_del lp_i];
                     fprintf(['\nEpic ' pL.String ' cause ' pR.String ...
                         ' SCORE!!!!!!!!!!!!!!!!!!!']);
