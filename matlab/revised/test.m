@@ -16,7 +16,7 @@ np1__2_34=T_ADD_PATTERN(events, ps, ps(1), np2_34, mesh_step, pattern_window, Nt
 
 %%
 Thetas = [ 0 1; 60 3.3; 25 1.4; 27 1.7; 20 1.2; 20 0.4; 11 1.3; 20 2;];
-[events, Nt, ts] = T_GENERATE_FUZZY_PATTERN('abcdefgj', 'xwyz', Thetas, 7, 1500, 0.01, 0.01);
+[events, Nt, ts] = T_GENERATE_FUZZY_PATTERN('abcdefgj', 'xwyz', Thetas, 6, 500, 0.001, 0.001);
 
 conf.alpha = 0.01;
 conf.kkmax = 2.1;
@@ -25,7 +25,7 @@ conf.lambda = 6;
 conf.lhmult = 0.5;
 conf.cor = 0.6;
 conf.maxSigma = round( Nt / 250 ); 
-conf.maxMu = round( Nt / 3 ); 
+conf.maxMu = round( Nt / 30 ); 
 conf.min_pow_missed = -8;
 conf.allow_same_events = false;
 

@@ -1,0 +1,126 @@
+GENERAL README FOR T_PATTERNS@matlab
+===========================================================================
+
+All functions have prefix "T_", dont be confused with "T-PATTERNS".
+Function for t-pattern detection is T_FIND_TPATTERNS, compare with function
+T_FIND_PATTERNS for proposed probabilistic patterns detection. I am sorry..
+. 
+
+Here on '>>' will denote MATLAB console, and '#>' - is OS shell.
+
+
+II. CODE REFEREES
+Here are described all structures and cells, that are used in code. Some
+comments in code are referring here.
+
+(1) BEHAVIOR TEXT FILE FORMAT********************************************
+Behavior file must be exactly following format:
+Time[\t]Event
+0[\t]:
+time[\t]event_string
+...
+time[\t]event_string
+time[\t]&
+
+Here [\t] --- tabulation symbol(very important), as you see there are NO 
+SPACES! 
+time --- is INTEGER, all values of time should be sorted ascending
+from top to bottom of the file.
+event_string --- is string(without spaces), it is name of event type.
+Please see examples in source data. Keep in mind problems with 
+newline in UNIX and WINDOWS, there were not much workaround.
+
+(2) THE GROUPS STRUCTURE*************************************************
+It is convenient to work with all animals, devided into few groups. For
+example, first group can represent behavior of 15 animals with paralized
+hippocampus, second group can be control group, containing 12 healthy 
+regular animals. There can be more groups as well as only one.
+
+Here is matlab syntax for defining that array of structures
+Groups = struct( 
+'Nfiles', [],       % Number of files in that group
+'Patterns', {},     % Patterns, found in that file. See PATTERN STRUCTURE
+'conf', [],         % See CONFIG STRUCTURE.
+Label', []          % String, name of group.
+);
+
+Example:
+Group(1).Nfiles = 15;
+Group(1).Label = 'Hippocampal';
+for i = 1:15
+    ...
+    Group(1).Patterns{i} = T_FIND_PATTERNS( ... );
+end
+
+(3) CONFIG STRUCTURE*****************************************************
+That structure controls methods behavior and contains major parameters.
+Default values are specified in rectangular bracets []. I have outlined
+3 groups of parameters: "Crucial" can be tuned an are importnat for 
+different experiments, "Can be considered" default values for these 
+parameters most likely should work fine, "Pure technical" it would be very 
+strange if you will try to change these parameters.
+
+#Crucial##
+conf.alpha -- significance level. [=0.001]
+conf.Nmin  -- minimal pattern occurrences. [=3]
+conf.lambda - pattern fuzziness level. [=8]
+#Can be considered##
+conf.cor ---- Minimal correlation for delteing pattern duplicate. [=0.6]
+conf.lhmult - Sensivity to likelyhood. [=0.5]
+conf.maxSigma Maximal tested variance. [ =round( Nt/250 ) ]
+conf.maxMu    Maximal tested shift. [ =round( Nt/3 ) ]
+#Pure techincal##
+conf.min_pow_missed --- should be removed in future [=-8]
+conf.kkmax  --- weight alignment. [=2]
+However  conf.events and conf.Nt should be specified too.
+
+(4) EVENTS STRUCTURE*****************************************************
+In general, every behavior file corresponds to one "events" structure. So
+our time series is ordered in following way:  for every event type, 
+theres is element with 2 fields: even name(string), ocurrences times(array)
+
+Here is definition for matlab syntax:
+events = struct( 'event_name', [], 'indexes', [] );
+
+Example:
+>>events(1)
+    event_name: 'b'
+    indexes: [64 497 1008 1527 2032 2654]
+>>events(2)
+    event_name: 'Вылизывание_задних_конечностей'
+    indexes: [1 435 946 1464 1968 2177 2599]
+
+(5) PATTERN STRUCTURE****************************************************
+For every file(animal) we have a set of found patterns. So following
+structure corresponds to every behavior file:
+pattern_structure = struct(
+'Events', {},  %Event types, that pattern consist of(indexes from EVENTS 
+               %STRUCTURE)
+'Theta', {},   %[ number_of_events_in_pattern X 2 ] first column represents
+               %shifts, second -- variances.
+'String', {},  % String with human-readable pattern representation.
+'Lh', {},      % [1XNt] Likelihood function.
+'LhEND', {},   % [1XNt] Likelihood function computed from end(for speedup).
+'Lh_mins', {}, % OBSOLETE
+'Lh_maxs', {}, % MAximums of likelihood. i.e. when does pattern occur?
+'LhEND_mins', {}% OBSOLETE 
+'LhEND_maxs', {}% Same as Lh_maxs, but from the end.
+'New',   []     % Technical
+'LhSHIFTED'    % [ number_of_events_in_pattern X Nt ] (it is huge) 
+               %likelihoods computed with re spect to every event in 
+               %pattern
+);
+
+Example:
+>>pattern_structure( 15 )
+        Events: [1 2 3 4 5 6 7 8]
+         Theta: [8x2 double]
+        String: 'a b c d e f g j'
+            Lh: [1x2799 double]
+         LhEND: [1x2799 double]
+       Lh_mins: []
+       Lh_maxs: [1 435 946 1464 1968 2599]
+    LhEND_mins: []
+    LhEND_maxs: [183 625 1132 1655 2153 2776]
+     LhSHIFTED: [8x2799 double]
+           New: 0

@@ -111,13 +111,11 @@ for lp_i = 1 : numel( pattern_pool )
         if nnz( ismember( pL.Events, pR.Events ) ) == numel( pL.Events )
             for i = 1:numel(pR.Events)
                 R = pR.LhSHIFTED(i,:);
-                if (pL.Lh*R') / ( sqrt( pL.Lh*pL.Lh' ) * sqrt( R*R' ) ) ...
-                        >= conf.cor
+                if (pL.Lh*R') / ( sqrt( pL.Lh*pL.Lh' ) * sqrt( R*R' ) ) >= conf.cor
                     to_del = [ to_del lp_i];
-                    fprintf(['\nEpic ' pL.String ' cause ' pR.String ...
-                        ' SCORE!!!!!!!!!!!!!!!!!!!']);
+                    fprintf(['\nEpic ' pL.String ' cause ' pR.String ' SCORE!!!!!!!!!!!!!!!!!!!']);
                     if i>1
-                        fprintf(['\nWIN##############################']);
+                        fprintf(['\nWIN#####################################']);
                     end
                 end
             end
@@ -127,13 +125,13 @@ for lp_i = 1 : numel( pattern_pool )
 end
 to_del = sort(unique(to_del));
 while ~isempty(to_del)
-    pattern_pool = pattern_pool( [ 1:(to_del(1)-1) (to_del(1)+1):end ] );
+    pattern_pool = pattern_pool( [1:(to_del(1)-1) (to_del(1)+1):end]);
     to_del = to_del(2:end);
     to_del = to_del - 1;
 end
 
 
-disp('ITERATION---------------------------------------------------------')
+disp('ITERATION-----------------------------------------------------------------------------------')
 end
 
 for p = 1:numel(pattern_pool)
