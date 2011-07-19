@@ -22,31 +22,37 @@
 
 function Groups = T_LOAD_GROUPS_AND_SEARCH_PATTERNS( fpath, varargin )
 
-% Create new pattern by merging given left and right subpatterns,
-% connection parameters(shift and variance). Compute Likelihoods and 
-% maximums for new pattern 
+% Create Group structure(M groups) and detect allpatterns. Can take some 
+%time to run
 %
-% [new_pats, patterns_merged] = T_ADD_PATTERN(events, ps, pL, pR, ...
-% mesh_step, pattern_window, Nt, use_cuda, conf )
+% Groups = T_LOAD_GROUPS_AND_SEARCH_PATTERNS( fpath, 
+%    files1, label1, ..., filesM, lalbelM,
+%    ['alpha', value],  ['kkmax', value],  ['Nmin', value], 
+%    ['lambda', value], ['lhmult', value], ['cor', value], 
+%    ['min_pow_missed', value], ['allow_same_events', true|false], 
+%    ['cuda_enabled', true|false] );
 %
 % Arguments
-% events    [ array struct ] Events structure. See README, EVENTS STRUCTURE
-% ps  OBSOLETE
-% pL        [ 1 x struct ] Left pattern structure(subpattern). See README,
-%PATTERN STRUCTURE
-% pR         [ 1 x struct ] Right ==||== see previous
-% Nt        [ int ]    Length of time period, while we are watching animal.
-% use_cuda  [ bool ] Try to use cuda. Will return warning if something is 
-%wrong
-% conf      [ struct ] configuration structure with algorithm's parameters,
-%etc. See README, CONFIG STRUCTURE.
-%
-% new_pats [ array struct ] Pattern to add(that we found). See README,
-%PATTERN STRUCTURE
-% patterns_merged [ int ]   Amount of found pattern.
+% fpath    [ string ] reletave path to folder, where ALL behavior formattd
+%text files situated. Dont forget slash in the end!
+% files*  [ 1 x Nfiles cell of strings], containing filenames in folder
+% label*  [ string ], name of the group
+% alpha    [ scalar ] significance level. [=0.001]
+% Nmin     [ scalar ] minimal pattern occurrences. [=3]
+% lambda   [ scalar ] - pattern fuzziness level. [=8]
+% cor      [ scalar ] Minimal correlation for delteing pattern 
+%duplicate. [=0.6]
+% lhmult   [ scalar ] Sensivity to likelyhood. [=0.5]
+% kkmax    [ scalar ] weight alignment. [=2]
+% allow_same_events [ bool ] can pattern have teo or more same events?
+%[=false]
+% cuda_enabled      [ bool ] Is CUDA? [=true]
+% OBSOLETE maxSigma Maximal tested variance. [ =round( Nt/250 ) ]
+% OBSOLETE maxMu    Maximal tested shift. [ =round( Nt/3 ) ]
+% OBSOLETE min_pow_missed  should be removed in future [=-8]
 %
 % Revisions:
-% Author: 18 Jul 2011 Valeriy Vishnevskiy
+% Author: 19 Jul 2011 Valeriy Vishnevskiy
 % Superviser: Dmitry Vetrov
 
 optargs = size( varargin, 2 );
@@ -62,7 +68,7 @@ lhmult = 0.6;
 cor = 0.6;
 min_pow_missed = -9;
 allow_same_events = false;
-cuda_enabled = false;
+cuda_enabled = true;
 argGroups = true; % are we reading groups right now?
 while i <= optargs
     if argGroups && isa( varargin{i}, 'cell' )
@@ -131,18 +137,16 @@ for ng = 1 : numel( Gfiles )
         conf.lhmult = lhmult;
         conf.cor = cor;
         conf.maxSigma = round( Nt / 100 ); 
-        conf.maxMu = round( Nt / 10 ); 
+        conf.maxMu = round( Nt / 8 ); 
         conf.min_pow_missed = min_pow_missed;
         conf.allow_same_events = allow_same_events;
         conf.Nt =  Nt;
         conf.events = events;
-        conf
         pattern_window = round(Nt/2);
         ps = T_PS_FROM_TS(events, Nt, 1, conf);
-        ps.Lh_maxs
         Groups( ng ).conf{ nf } = conf;
-        [fpath, Gfiles( ng ).files{ nf } ]
-        fprintf('!!!!\n###%d %d###\n!!!!', ng, nf);
+
+        fprintf('!!!!\n###%d %d### %s\n!!!!\n', ng, nf, [fpath, Gfiles( ng ).files{ nf } ]);
         Groups( ng ).Patterns{ nf } = T_FIND_PATTERNS(events, ps, Nt, ...
             pattern_window, cuda_enabled, conf);
     end

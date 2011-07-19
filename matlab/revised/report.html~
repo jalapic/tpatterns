@@ -12,14 +12,14 @@
 <tr><td># особей группы #1,  &nbsp;у которых был найден паттерн:</td><td> <b>4</b> </td></tr>
 <tr><td># особей группы #2, у которых был найден паттерн: </td><td>     <b>0</b> </td></tr>
 <tr><td>Паттерн был найден в группе</td><td>  <b>Group 1</b> </td></tr>
-<tr><td>У животного №</td><td>  <b>2</b></td></tr>
+<tr><td>У животного №</td><td>  <b>1</b></td></tr>
 </table><b>[</b> 0.0; 0.1 <b>]</b> <span style="background-color:#1a8080">&nbsp;&nbsp;</span><small>act9</small> <b>[</b> 6.1; 1.0 <b>]</b> <span style="background-color:#1a1a1a">&nbsp;&nbsp;</span><small>act1</small> <b>[</b> 24.8; 0.3 <b>]</b> <span style="background-color:#1a80e6">&nbsp;&nbsp;</span><small>act4</small> <hr/><br/>
 <table><tr><td>Паттерн №</td><td> <b>3</b> </td></tr>
 <tr><td># событий в паттерне</td><td> <b>3</b> </td></tr>
 <tr><td># особей группы #1,  &nbsp;у которых был найден паттерн:</td><td> <b>4</b> </td></tr>
 <tr><td># особей группы #2, у которых был найден паттерн: </td><td>     <b>0</b> </td></tr>
 <tr><td>Паттерн был найден в группе</td><td>  <b>Group 1</b> </td></tr>
-<tr><td>У животного №</td><td>  <b>5</b></td></tr>
+<tr><td>У животного №</td><td>  <b>1</b></td></tr>
 </table><b>[</b> 0.0; 0.1 <b>]</b> <span style="background-color:#1a1a80">&nbsp;&nbsp;</span><small>act6</small> <b>[</b> 18.5; 1.0 <b>]</b> <span style="background-color:#1a80e6">&nbsp;&nbsp;</span><small>act4</small> <b>[</b> 1.6; 0.2 <b>]</b> <span style="background-color:#1ae61a">&nbsp;&nbsp;</span><small>act3</small> <hr/><br/>
 <h1>Менее информативные паттерны</h1>
 <table><tr><td>Паттерн №</td><td> <b>4</b> </td></tr>
@@ -41,13 +41,13 @@
 <tr><td># особей группы #1,  &nbsp;у которых был найден паттерн:</td><td> <b>3</b> </td></tr>
 <tr><td># особей группы #2, у которых был найден паттерн: </td><td>     <b>0</b> </td></tr>
 <tr><td>Паттерн был найден в группе</td><td>  <b>Group 1</b> </td></tr>
-<tr><td>У животного №</td><td>  <b>4</b></td></tr>
+<tr><td>У животного №</td><td>  <b>1</b></td></tr>
 </table><b>[</b> 0.0; 0.1 <b>]</b> <span style="background-color:#1a801a">&nbsp;&nbsp;</span><small>act7</small> <b>[</b> 25.8; 0.2 <b>]</b> <span style="background-color:#1a80e6">&nbsp;&nbsp;</span><small>act4</small> <b>[</b> 1.2; 1.3 <b>]</b> <span style="background-color:#1a8080">&nbsp;&nbsp;</span><small>act9</small> <b>[</b> 4.9; 2.1 <b>]</b> <span style="background-color:#1a1a80">&nbsp;&nbsp;</span><small>act6</small> <hr/><br/>
 <table><tr><td>Паттерн №</td><td> <b>7</b> </td></tr>
 <tr><td># событий в паттерне</td><td> <b>4</b> </td></tr>
 <tr><td># особей группы #1,  &nbsp;у которых был найден паттерн:</td><td> <b>3</b> </td></tr>
 <tr><td># особей группы #2, у которых был найден паттерн: </td><td>     <b>0</b> </td></tr>
 <tr><td>Паттерн был найден в группе</td><td>  <b>Group 1</b> </td></tr>
-<tr><td>У животного №</td><td>  <b>2</b></td></tr>
+<tr><td>У животного №</td><td>  <b>1</b></td></tr>
 </table><b>[</b> 0.0; 0.1 <b>]</b> <span style="background-color:#1a8080">&nbsp;&nbsp;</span><small>act9</small> <b>[</b> 23.8; 0.8 <b>]</b> <span style="background-color:#1a801a">&nbsp;&nbsp;</span><small>act7</small> <b>[</b> 31.3; 3.0 <b>]</b> <span style="background-color:#1a80e6">&nbsp;&nbsp;</span><small>act4</small> <b>[</b> 1.2; 0.8 <b>]</b> <span style="background-color:#1a1a80">&nbsp;&nbsp;</span><small>act6</small> <hr/><br/>
 </body></html>

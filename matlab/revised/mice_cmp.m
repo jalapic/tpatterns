@@ -213,22 +213,27 @@ title('MinPat=5, \beta=0');
 %%
 %hold on
 %colormap('gray');
-nC=CorrsP{2,3};
+nC=CorrsP{1, 1};
+S = nC;
+S = spdiags(1./sum(S,2),0,size(S,2),size(S,1))*S;
+nC=S;
 %pcolor(nC)
 %shading flat
 %nC(3,10)=10000;
+colormap bone
 imagesc(flipud(nC));
 %colormap('gray');
-line([12.5, 12.5], [0 25], 'color', [0 0 0], 'LineWidth', 2)
-line([0, 25], [12.5 12.5], 'color', [0 0 0], 'LineWidth', 2)
-text(4,23, ['C. in C. ' int2str(sum(sum(nC(1:12,1:12)))) ' matches' ], 'color', 'black', 'FontSize', 8, 'BackgroundColor',[.7 .9 .7] );
-text(18,3, ['H. in H. ' int2str(sum(sum(nC(13:24,13:24)))) ' matches' ], 'color', 'black', 'FontSize', 8, 'BackgroundColor',[.7 .9 .7] );
-set(gca,'XTick',1:5.7:24)
-set(gca,'YTick',1:5.7:24)
-set(gca,'XTickLabel',{'1','6','12','18','24'})
-set(gca,'YTickLabel',{'24','18','12','6','1'})
-text(3,3, ['H. in C. ' int2str(sum(sum(nC(13:24,1:12)))) ' matches'], 'color', 'black', 'FontSize', 8, 'BackgroundColor',[.7 .9 .7] );
-text(18,15, ['C. in H. ' int2str(sum(sum(nC(1:12,13:24)))) ' matches' ], 'color', 'black', 'FontSize', 8, 'BackgroundColor',[.7 .9 .7] );
+nC=CorrsP{1, 1};
+line([6.5, 6.5], [0 12], 'color', [1 0 0], 'LineWidth', 2)
+line([0, 12], [5.5 5.5], 'color', [1 0 0], 'LineWidth', 2)
+text(3.5,11, ['#1 in #1 =' int2str(sum(sum(nC(1:6,1:6)))) ' matches' ], 'color', 'black', 'FontSize', 8, 'BackgroundColor',[.7 .9 .7] );
+text(8,0, ['#2 in #2 = ' int2str(sum(sum(nC(7:11,7:11)))) ' matches' ], 'color', 'black', 'FontSize', 8, 'BackgroundColor',[.7 .9 .7] );
+% set(gca,'XTick',1:5.7:24)
+set(gca,'YTick',1:11)
+% set(gca,'XTickLabel',{'1','6','12','18','24'})
+set(gca,'YTickLabel',{'11','10','9','8','7','6','5','4','3','2','1',})
+text(1,0, ['#2 in #1 = ' int2str(sum(sum(nC(7:11,1:6)))) ' matches'], 'color', 'black', 'FontSize', 8, 'BackgroundColor',[.7 .9 .7] );
+text(8,11, ['#1 in #2 =' int2str(sum(sum(nC(1:6,7:11)))) ' matches' ], 'color', 'black', 'FontSize', 8, 'BackgroundColor',[.7 .9 .7] );
 %title('Cross matching between Control group(C.) and Hippocampal group(H.)');
 
 
@@ -428,6 +433,7 @@ for ii = 1 : N
         A = [];
         npat = numel( Group( fromGroup ).Patterns{fromInd} );
         for j = 1 : npat
+            %fprintf('II%d %d\n', ii, iii);
             [m l ] = T_PAT_ON_DATA( Group( fromGroup ).Patterns{fromInd}(j), Group( toGroup ).conf{ toInd } );
             A = [A;m l];
             if numel( Group( fromGroup ).Patterns{fromInd}(j).Events ) > 1
@@ -798,11 +804,12 @@ informS = zeros(1, size(BigCorr,2) );
 ii = 1;
 clear pstat
 for i = 1 : size(BigCorr,2)
-    p = nnz( BigCorr(1:12, i ) >= 3 );
-    n = nnz( BigCorr(13:end, i ) >= 3 );
-    
-    if numel( BigCorrPat{i}.Events ) > 4 
-        t = -log( hygepdf(p, size(BigCorr,1), 12, p+n ) );
+    p = nnz( BigCorr(1:6, i ) >= 3 );
+    n = nnz( BigCorr(7:end, i ) >= 3 );
+   
+    if numel( BigCorrPat{i}.Events ) > 2 && p+n > 1
+         fprintf('%d %d %s\n', p, n, BigCorrPat{i}.String);
+        t = -log( hygepdf(p, size(BigCorr,1), 5, p+n ) );
         if t > -log(0.05)
             inform( i ) = t;
             informS(i) = sqrt(p) - sqrt(n);
@@ -906,11 +913,11 @@ set(gca,'YTickLabel',{'24','18','12','6','1'})
 
 %%
 ip = idx(1);
-
-for i = 1 : 12
-    subplot(3,4,i);
+ip = 3;
+for i = 1 : 5
+    subplot(2,3,i);
     T_PAT_ON_DATA(pstat(ip).String, Group(2).conf{i})
-    set(gca,'XTick', [])
+   % set(gca,'XTick', [])
     %set(gca,'YTick', [])
-  %  axis([-Inf Inf 0 5e-10] )
+    %axis([-Inf Inf 0 5e-10] )
 end   

@@ -64,13 +64,14 @@ for lp_i = 1 : numel( pattern_pool )
                 ( ~conf.allow_same_events )
             continue
         end
-        fprintf( '\n%d %d[ %s| %s ]', lp_i, rp_i, pL.String, pR.String);
+        %fprintf( '\n%d %d[ %s| %s ]', lp_i, rp_i, pL.String, pR.String);
         
         % Try to join these patterns
         [new_pats, found_patterns] = T_ADD_PATTERN( events, ep, pL, pR, ...
             1, pattern_window, Nt, use_cuda, conf );
         
         if ( found_patterns ~= 0 )
+            fprintf( 'Added %d %d[ %s| %s ]\n', lp_i, rp_i, pL.String, pR.String);
             for i = 1 : found_patterns 
                 new_pattern = new_pats(i);
                 %if ( sum(new_pattern.Lh_maxs)/max( new_pattern.Lh_maxs ...

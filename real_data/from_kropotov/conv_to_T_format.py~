@@ -12,6 +12,6 @@ print 'Time\tEvent\n',
 print '0\t:\n',
 for i in enumerate(ts):
   if i[1] != prev:
-    print i[0], '\t',i[1],'\n',
+    print '%d\t%s\n'%(i[0],i[1]),
     prev = i[ 1 ]
 print i[0], '\t&'

@@ -8,8 +8,6 @@ mus=0;
 sigmas=0;
 N=0;
 
-size(patL_ind)
-size(patR_ind)
 
 for i = 1 : size( patL_ind, 2 )
     for j = 1 : size( patR_ind, 2)
@@ -25,7 +23,7 @@ end
 %weights
 %ok now we have our w_i distribution.
 if isempty( weights )
- disp('Empty weights!!!!!!!!!')
+ disp(['![' left_pat.String '|' right_pat.String ']Empty weights']);
  N=0;
  mus=0;
  sigmas=0;
@@ -41,7 +39,7 @@ end
 %if we don't have enough points
 if size( weights, 1 ) < 3
     N=0;
-    disp('smaaaal');
+    disp(['![' left_pat.String '|' right_pat.String ']Not enough weights(<3)']);
     mus=0;
     sigmas=0;
     return

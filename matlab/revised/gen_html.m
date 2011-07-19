@@ -123,15 +123,16 @@ end
 fprintf( fid, '<hr/>');
 for ii = 1 : numel( pstat )
     i = idx(ii);
-    if pstat(i).p + pstat(i).n <=4
+    if pstat(i).p + pstat(i).n <=1
         continue;
     end
     pnames = regexp(pstat(i).String.String, ' ', 'split');
     fprintf(fid, '<table>' );
+    fprintf(fid, '<tr><td>Паттерн №</td><td> <b>%d</b> </td></tr>\n', ii );
     fprintf(fid, '<tr><td># событий в паттерне</td><td> <b>%d</b> </td></tr>\n', numel( pstat(i).String.Events ) );
-    fprintf(fid, '<tr><td># особей группы "контроль",  &nbsp;у которых был найден паттерн:</td><td> <b>%d</b> </td></tr>\n', pstat(i).p);
-    fprintf(fid, '<tr><td># особей группы "гиппокамп", у которых был найден паттерн: </td><td>     <b>%d</b> </td></tr>\n', pstat(i).n);
-    fprintf(fid, '<tr><td>Статистическая информативность(на основе гиппер-геом. распр.) </td><td>  <b>%.2f</b> (Болшье -- информативней) </td></tr>\n', pstat(i).Inf);
+    fprintf(fid, '<tr><td># особей группы #1,  &nbsp;у которых был найден паттерн:</td><td> <b>%d</b> </td></tr>\n', pstat(i).p);
+    fprintf(fid, '<tr><td># особей группы #2, у которых был найден паттерн: </td><td>     <b>%d</b> </td></tr>\n', pstat(i).n);
+    %fprintf(fid, '<tr><td>Статистическая информативность(на основе гиппер-геом. распр.) </td><td>  <b>%.2f</b> (Болшье -- информативней) </td></tr>\n', pstat(i).Inf);
     fprintf(fid, '<tr><td>Паттерн был найден в группе</td><td>  <b>%s</b> </td></tr>\n', Group( FilteredPatterns_gi(i) ).Label );
     fprintf(fid, '<tr><td>У животного №</td><td>  <b>%d</b></td></tr>\n', FilteredPatterns_ai(i) );
     fprintf(fid, '</table>' );
