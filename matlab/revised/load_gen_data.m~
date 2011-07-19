@@ -34,7 +34,7 @@ for i = 1:12
     pattern_window = round(Nt/2);
     ps = T_PS_FROM_TS(events, Nt, 1, conf);
     Group(1).conf{i} = conf;
-    %Group(1).Patterns{i} = T_FIND_PATTERNS(events, ps, Nt, pattern_window, true, conf);
+    Group(1).Patterns{i} = T_FIND_PATTERNS(events, ps, Nt, pattern_window, true, conf);
     
     clear conf
     [events, Nt] = T_LOAD_FILE([fpath, Hippocampal_files{i}]);
@@ -54,7 +54,7 @@ for i = 1:12
     pattern_window = round(Nt/2);
     ps = T_PS_FROM_TS(events, Nt, 1, conf);
     Group(2).conf{i} = conf;
-    %Group(2).Patterns{i} = T_FIND_PATTERNS(events, ps, Nt, pattern_window, true, conf);
+    Group(2).Patterns{i} = T_FIND_PATTERNS(events, ps, Nt, pattern_window, true, conf);
 end
 
 

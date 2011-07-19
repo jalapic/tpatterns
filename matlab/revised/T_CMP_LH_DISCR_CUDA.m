@@ -8,6 +8,9 @@ mus=0;
 sigmas=0;
 N=0;
 
+size(patL_ind)
+size(patR_ind)
+
 for i = 1 : size( patL_ind, 2 )
     for j = 1 : size( patR_ind, 2)
         pLR(i,j) = patR_ind(j) - patL_ind(i);
@@ -62,7 +65,6 @@ i=0;
 
 
 M = Nt;%max( weights(:,1));
-
 
 lh = mexD_CMP(weights, conf.alpha, conf.kkmax, 1.0, 1.0, conf.maxSigma, Nt, conf.maxMu );
 %fprintf('\nlhsis=%d wsize=%d %d\n', size(lh,1), size(weights,1), round(pattern_window/100) );
