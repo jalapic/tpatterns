@@ -214,9 +214,9 @@ title('MinPat=5, \beta=0');
 %hold on
 %colormap('gray');
 nC=CorrsP{1, 1};
-S = nC;
-S = spdiags(1./sum(S,2),0,size(S,2),size(S,1))*S;
-nC=S;
+% S = nC;
+% S = spdiags(1./sum(S,2),0,size(S,2),size(S,1))*S;
+% nC=S;
 %pcolor(nC)
 %shading flat
 %nC(3,10)=10000;

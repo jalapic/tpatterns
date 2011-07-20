@@ -6,8 +6,8 @@ G2_files={'U16_exp.txt', 'U17_exp.txt','U18_exp.txt', 'U19_exp.txt',...
     'U21_exp.txt'};
 
 Groups = T_LOAD_GROUPS_AND_SEARCH_PATTERNS( fpath, G1_files, 'Group 1', ...
-    G2_files, 'Group 2', 'alpha', 0.05, 'lhmult', 0.5, 'cor', 0.7, ...
-    'lambda', 5, 'kkmax', 1.8 );
+    G2_files, 'Group 2', 'alpha', 0.01, 'lhmult', 0.6, 'cor', 0.6, ...
+    'lambda', 7, 'kkmax', 2, 'allow_same_events', true, 'Nmin', 2 );
 
 %% Try to detect poterns across files
 N = sum( [ Groups.Nfiles ] );
@@ -76,10 +76,14 @@ for i = 1 : size(BigCorr,2)
     p = nnz( BigCorr( 1:6,   i ) >= 2 );
     n = nnz( BigCorr( 7:end, i ) >= 2 );
    
+    if nnz( BigCorr( :,   i ) >= 1 ) > 4
+        fprintf('#%d %d %d %s\n', i, p, n,BigCorrPat{i}.String);
+    end
+    
     if numel( BigCorrPat{i}.Events ) > 2 && p+n > 2
          fprintf('%d %d %s\n', p, n, BigCorrPat{i}.String);
         t = -log( hygepdf(p, size(BigCorr,1), 5, p+n ) );
-        if t > -log(0.05)
+        %if t > -log(0.05)
             inform( i ) = t;
             informS(i) = sqrt(p) - sqrt(n);
             pstat(ii).String = BigCorrPat{i};
@@ -88,7 +92,7 @@ for i = 1 : size(BigCorr,2)
             pstat(ii).n = n;
             ii = ii + 1;
             fprintf('%d %.2f %.3f %.3f %d %d %s\n', i, t, n/(n+p), p/24,  p, n, BigCorrPat{i}.String );
-        end
+       % end
     end
 end
 

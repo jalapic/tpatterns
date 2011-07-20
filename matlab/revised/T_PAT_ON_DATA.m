@@ -31,10 +31,10 @@ function [nummaaxs, lhsum, lh] = T_PAT_ON_DATA( patin, conf, varargin )
     
     [ pat.Lh_mins, pat.Lh_maxs ] =  T_GET_MINMAX( pat.Lh, 1, sum( pat.Theta(:,1) ), pat, conf );
     %[ pat.LhEND_mins, pat.LhEND_maxs ] = T_GET_MINMAX( pat.LhEND, 1, sum( pat.Theta(:,1) ), pat, conf );
-     hold on;
-     plot(pat.Lh);
-     plot( pat.Lh_maxs, pat.Lh( pat.Lh_maxs )*0, 's', 'MarkerSize', 4, 'MarkerFaceColor', 'y', 'MarkerEdgeColor', 'r');
-  %  T_CALC_LH( conf.events, conf.Nt, pat, true, false, 1, conf );
+%      hold on;
+%      plot(pat.Lh);
+%      plot( pat.Lh_maxs, pat.Lh( pat.Lh_maxs )*0, 's', 'MarkerSize', 4, 'MarkerFaceColor', 'y', 'MarkerEdgeColor', 'r');
+    T_CALC_LH( conf.events, conf.Nt, pat, true, false, 1, conf );
     nummaaxs = numel( pat.Lh_maxs );
     lhsum = sum( pat.Lh );
     lh = pat.Lh;
