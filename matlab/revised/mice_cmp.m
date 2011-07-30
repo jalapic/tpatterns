@@ -470,7 +470,7 @@ for ii = 1 : N
     end
 end
 
-%% 
+%% !!!!!!!!!!YES
 MinMatches = 3;
 N = sum( [ Group.Nfiles ] );
 CorrsP = cell(2, 4);
@@ -913,10 +913,10 @@ set(gca,'YTickLabel',{'24','18','12','6','1'})
 
 %%
 ip = idx(1);
-ip = 3;
-for i = 1 : 5
+
+for i = 1 : 6
     subplot(2,3,i);
-    T_PAT_ON_DATA(pstat(ip).String, Group(2).conf{i})
+    T_PAT_ON_DATA(pstat(ip).String, Group(1).conf{i})
    % set(gca,'XTick', [])
     %set(gca,'YTick', [])
     %axis([-Inf Inf 0 5e-10] )

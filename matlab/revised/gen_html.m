@@ -87,15 +87,15 @@ end
 %% make html file
 %h = figure('Visible', 'off')
 %lines = colormap( 'jet' );
-lines = [];
-r = [ 0.1, 0.5, 0.9 ];
-for i = 1 : 3
-    for ii = 1 : 3
-        for iii = 1 : 3
-            lines = [ lines; r(i) r(ii) r(iii)]; 
-        end
-    end
-end
+% lines = [];
+% r = [ 0.1, 0.5, 0.9 ];
+% for i = 1 : 3
+%     for ii = 1 : 3
+%         for iii = 1 : 3
+%             lines = [ lines; r(i) r(ii) r(iii)]; 
+%         end
+%     end
+% end
 
 bgcolor_coef = 1.8;
 
@@ -104,7 +104,7 @@ bgcolor_coef = 1.8;
 %     pstat(i).String = FilteredPatterns{i};
 % end
 
-fid = fopen('report.html','w', 'n', 'UTF-8');
+fid = fopen('report2.html','w', 'n', 'UTF-8');
 fprintf(fid, '<html><head><meta charset="utf-8"/></head><body>');
 
 fprintf(fid, '<h3>Цветовое кодирование событий</h3>');
@@ -130,11 +130,13 @@ for ii = 1 : numel( pstat )
     fprintf(fid, '<table>' );
     fprintf(fid, '<tr><td>Паттерн №</td><td> <b>%d</b> </td></tr>\n', ii );
     fprintf(fid, '<tr><td># событий в паттерне</td><td> <b>%d</b> </td></tr>\n', numel( pstat(i).String.Events ) );
+    fprintf(fid, '<tr><td>Статистическая информативность(на основе гиппер-геом. распр.) </td><td>  <b>%.2f</b> (Болшье -- информативней) </td></tr>\n', pstat(i).Inf);
+    fprintf(fid, '<tr><td>&nbsp;</td></tr>\n');
     fprintf(fid, '<tr><td># особей группы #1,  &nbsp;у которых был найден паттерн:</td><td> <b>%d</b> </td></tr>\n', pstat(i).p);
     fprintf(fid, '<tr><td># особей группы #2, у которых был найден паттерн: </td><td>     <b>%d</b> </td></tr>\n', pstat(i).n);
-    %fprintf(fid, '<tr><td>Статистическая информативность(на основе гиппер-геом. распр.) </td><td>  <b>%.2f</b> (Болшье -- информативней) </td></tr>\n', pstat(i).Inf);
-    fprintf(fid, '<tr><td>Паттерн был найден в группе</td><td>  <b>%s</b> </td></tr>\n', Group( FilteredPatterns_gi(i) ).Label );
-    fprintf(fid, '<tr><td>У животного №</td><td>  <b>%d</b></td></tr>\n', FilteredPatterns_ai(i) );
+    
+    %fprintf(fid, '<tr><td>Паттерн был найден в группе</td><td>  <b>%s</b> </td></tr>\n', Group( FilteredPatterns_gi(i) ).Label );
+   % fprintf(fid, '<tr><td>У животного №</td><td>  <b>%d</b></td></tr>\n', FilteredPatterns_ai(i) );
     fprintf(fid, '</table>' );
     %fprintf(' %s', pstat(i).String.String);
     for j = 1 : numel( pstat(i).String.Events )
@@ -143,6 +145,100 @@ for ii = 1 : numel( pstat )
         qq = cellfun( @(x)strcmp(x,pnames{j}), all_events, 'UniformOutput', false );
         qq = cell2mat( qq );
         event_idx = find( qq ); %pstat(i).String.Events( j );
+        %pstat(i).String.Events( j )
+        for ic = 1 : 3 %for every component
+            col_dec = int16( 255 * lines( event_idx, ic ) ) ;
+            if col_dec > 255
+                col_dec = 255;
+            end
+            s_hex = hex(   fi( col_dec )   );
+            color_hash = [ color_hash, s_hex( end-1 : end ) ];
+        end
+        fprintf( fid, '<b>[</b> %.1f; %.1f <b>]</b> <span style="background-color:%s">&nbsp;&nbsp;</span><small>%s</small> ', pstat(i).String.Theta(j, 1)/10, pstat(i).String.Theta(j, 2)/10, color_hash, pnames{j});
+    end
+    fprintf(fid, '<hr/><br/>\n');
+end
+fprintf(fid, '</body></html>');
+fclose(fid);
+
+
+%%
+%% make html file
+%h = figure('Visible', 'off')
+%lines = colormap( 'jet' );
+% lines = [];
+% r = [ 0.1, 0.5, 0.9 ];
+% for i = 1 : 3
+%     for ii = 1 : 3
+%         for iii = 1 : 3
+%             lines = [ lines; r(i) r(ii) r(iii)]; 
+%         end
+%     end
+% end
+hold on;
+axis equal;
+bgcolor_coef = 1.8;
+
+[a idx] = sort([pstat.Inf], 'descend');
+% for i = 1 : numel( FilteredPatterns )
+%     pstat(i).String = FilteredPatterns{i};
+% end
+
+fid = fopen('report2.html','w', 'n', 'UTF-8');
+fprintf(fid, '<html><head><meta charset="utf-8"/></head><body>');
+
+fprintf(fid, '<h3>Цветовое кодирование событий</h3>');
+for i = 1 : numel( all_events )
+    color_hash = '#';
+    for ic = 1 : 3 %for every component
+        col_dec = int16( 255 * lines( i, ic ) ) ;
+        if col_dec > 255
+            col_dec = 255;
+        end
+        s_hex = hex(   fi( col_dec )   );
+        color_hash = [ color_hash, s_hex( end-1 : end ) ];
+    end
+    fprintf( fid, '<span style="background-color:%s">&nbsp;&nbsp;&nbsp;</span>%s<br/> ', color_hash, all_events{i});
+end
+fprintf( fid, '<hr/>');
+nele = 1;
+for ii = 1 : numel( pstat )
+    i = idx(ii);
+    if pstat(i).p + pstat(i).n <=1
+        continue;
+    end
+    pnames = regexp(pstat(i).String.String, ' ', 'split');
+    fprintf(fid, '<table>' );
+    fprintf(fid, '<tr><td>Паттерн №</td><td> <b>%d</b> </td></tr>\n', ii );
+    fprintf(fid, '<tr><td># событий в паттерне</td><td> <b>%d</b> </td></tr>\n', numel( pstat(i).String.Events ) );
+    fprintf(fid, '<tr><td>Статистическая информативность(на основе гиппер-геом. распр.) </td><td>  <b>%.2f</b> (Болшье -- информативней) </td></tr>\n', pstat(i).Inf);
+    fprintf(fid, '<tr><td>&nbsp;</td></tr>\n');
+    fprintf(fid, '<tr><td># особей группы #1,  &nbsp;у которых был найден паттерн:</td><td> <b>%d</b> </td></tr>\n', pstat(i).p);
+    fprintf(fid, '<tr><td># особей группы #2, у которых был найден паттерн: </td><td>     <b>%d</b> </td></tr>\n', pstat(i).n);
+    
+    %fprintf(fid, '<tr><td>Паттерн был найден в группе</td><td>  <b>%s</b> </td></tr>\n', Group( FilteredPatterns_gi(i) ).Label );
+   % fprintf(fid, '<tr><td>У животного №</td><td>  <b>%d</b></td></tr>\n', FilteredPatterns_ai(i) );
+    fprintf(fid, '</table>' );
+    %fprintf(' %s', pstat(i).String.String);
+    
+    if pstat( i ).Inf < 1.2 
+        continue;
+    end
+    nele = nele - 1;
+    %rectangle( 'Position', [-6, nele*2-0.35, pstat(i).Inf*5+0.1, 1.7], 'FaceColor', [0.9 0.9 0.9], 'EdgeColor', [1 1 1] ); 
+    rectangle( 'Position', [8, nele*2+0.2, pstat(i).n/2+0.1, 0.5], 'FaceColor', 'r' ); 
+    text( 7, nele*2+0.2, num2str( pstat(i).n ) );
+    
+    rectangle( 'Position', [-pstat(i).p/2-2, nele*2+0.2, pstat(i).p/2+0.1, 0.5], 'FaceColor', 'g' ); 
+    text( -1.65, nele*2+0.2, num2str( pstat(i).p ) );
+    for j = 1 : numel( pstat(i).String.Events )
+        
+        color_hash = '#';
+        
+        qq = cellfun( @(x)strcmp(x,pnames{j}), all_events, 'UniformOutput', false );
+        qq = cell2mat( qq );
+        event_idx = find( qq ); %pstat(i).String.Events( j );
+        rectangle( 'Position', [j*0.8, nele*2, 0.8, 1], 'FaceColor', lines( event_idx, : ) );
         %pstat(i).String.Events( j )
         for ic = 1 : 3 %for every component
             col_dec = int16( 255 * lines( event_idx, ic ) ) ;
